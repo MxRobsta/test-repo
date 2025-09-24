@@ -1,0 +1,15 @@
+defaults:
+  - .@paths: paths
+  - _self_
+
+dataset: dev
+devices: [aria, ha]
+
+sessions_file: ${paths.sessions_file}
+
+noisy_session_file: ${paths.noisy_session_file}
+ref_session_file: ${paths.ref_session_file}
+segments_file: ${paths.segments_file}
+
+noisy_seg_file: ${paths.noisy_seg_file}
+ref_seg_file: ${paths.ref_seg_file}

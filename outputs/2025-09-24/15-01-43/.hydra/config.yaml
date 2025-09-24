@@ -1,0 +1,21 @@
+paths:
+  chime9_dir: data/chime9_echi
+  scratch_dir: data/scratch
+  sessions_file: ${paths.chime9_dir}/metadata/sessions.{dataset}.csv
+  noisy_session_file: ${paths.chime9_dir}/{device}/{dataset}/{session}.{device}.wav
+  ref_session_file: ${paths.chime9_dir}/ref/{dataset}/{session}.{device}.{pid}.wav
+  segments_file: ${paths.chime9_dir}/metadata/ref/{dataset}/{session}.{device}.{pid}.csv
+  noisy_seg_file: ${paths.scratch_dir}/{device}/{dataset}/{session}.{device}.{pid}.{seg}.{start}_{end}.wav
+  ref_seg_file: ${paths.scratch_dir}/ref/{dataset}/{session}.{device}_ref.{pid}.{seg}.{start}_{end}.wav
+  filtered_dir: ${paths.scratch_dir}/filtered/{dataset}
+  filtered_file: ${paths.filtered_dir}/{session}.{device}.{pid}.{seg}.{start}_{end}.wav
+dataset: dev
+devices:
+- aria
+- ha
+sessions_file: ${paths.sessions_file}
+noisy_session_file: ${paths.noisy_session_file}
+ref_session_file: ${paths.ref_session_file}
+segments_file: ${paths.segments_file}
+noisy_seg_file: ${paths.noisy_seg_file}
+ref_seg_file: ${paths.ref_seg_file}
