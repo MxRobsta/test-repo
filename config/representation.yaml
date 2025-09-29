@@ -1,0 +1,7 @@
+defaults:
+  - .@paths: paths
+  - _self_
+
+representation_type: ppg
+filtered_store: ${paths.filtered_store}
+output_dir: ${paths.representation_dir}

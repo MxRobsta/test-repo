@@ -13,3 +13,5 @@ ref_seg_file: ${paths.scratch_dir}/ref/{dataset}/{session}.{device}_ref.{pid}.{s
 filtered_dir: ${paths.scratch_dir}/filtered/{dataset}
 filtered_file: ${paths.filtered_dir}/{session}.{device}.{pid}.{seg}.{start}_{end}.wav
 filtered_store: ${paths.scratch_dir}/metadata/filtered.json
+representation_dir: ${paths.scratch_dir}/{representation}/{dataset}
+representation_file: ${paths.representation_dir}/{session}.{device}.{pid}.{seg}.{start}_{end}.pt
