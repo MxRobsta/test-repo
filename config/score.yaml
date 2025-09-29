@@ -1,0 +1,5 @@
+defaults:
+  - .@paths: paths
+  - _self_
+
+filtered_store: ${paths.filtered_store}
