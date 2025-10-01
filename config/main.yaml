@@ -1,0 +1,24 @@
+defaults:
+  - .@paths: paths
+  - _self_
+
+noisy_seg_file: ${paths.noisy_seg_file}
+ref_seg_file: ${paths.ref_seg_file}
+
+filtered_file: ${paths.filtered_file}
+filtered_store: ${paths.filtered_store}
+
+representation_type: ppg
+representation_dir: ${paths.representation_dir}
+
+dataset: dev
+devices: [aria, ha]
+
+sessions_file: ${paths.sessions_file}
+
+noisy_session_file: ${paths.noisy_session_file}
+ref_session_file: ${paths.ref_session_file}
+segments_file: ${paths.segments_file}
+
+stagger_min: 0.5 # min padding in seconds
+stagger_max: 1.5

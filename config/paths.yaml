@@ -10,7 +10,7 @@ segments_file: ${paths.chime9_dir}/metadata/ref/{dataset}/{session}.{device}.{pi
 noisy_seg_file: ${paths.scratch_dir}/{device}/{dataset}/{session}.{device}.{pid}.{seg}.{start}_{end}.wav
 ref_seg_file: ${paths.scratch_dir}/ref/{dataset}/{session}.{device}_ref.{pid}.{seg}.{start}_{end}.wav
 
-filtered_dir: ${paths.scratch_dir}/filtered/{dataset}
+filtered_dir: ${paths.scratch_dir}/filtered/{system}
 filtered_file: ${paths.filtered_dir}/{session}.{device}.{pid}.{seg}.{start}_{end}.wav
 filtered_store: ${paths.scratch_dir}/metadata/filtered.json
 representation_dir: ${paths.scratch_dir}/{representation}/{dataset}

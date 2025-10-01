@@ -54,7 +54,9 @@ def get_representations(
 
 @hydra.main(version_base=None, config_path="../config", config_name="representation")
 def main(cfg: DictConfig):
-    get_representations(cfg.representation_type, cfg.filtered_store, cfg.output_dir)
+    get_representations(
+        cfg.representation_type, cfg.filtered_store, cfg.representation_dir
+    )
 
 
 if __name__ == "__main__":
