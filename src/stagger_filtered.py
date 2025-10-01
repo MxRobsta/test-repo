@@ -47,7 +47,7 @@ def main(cfg: DictConfig):
             noisy = noisy[:, 0] + noisy[:, 1]
 
         if nfs != rfs:
-            noisy_file = soxr.resample(noisy, nfs, rfs)
+            noisy = soxr.resample(noisy, nfs, rfs)
 
         start = seg["start"]
         end = seg["end"]
@@ -76,9 +76,9 @@ def main(cfg: DictConfig):
         sf.write(nfile, noisy_snippet, rfs)
 
         rfile = seg_ftemplate.format(
-            system="noisy",
+            system="ref",
             session=session,
-            device=device,
+            device=device + "_ref",
             pid=target,
             seg=seg_index,
             start=start,
