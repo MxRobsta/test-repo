@@ -2,9 +2,11 @@ import hydra
 import json
 from omegaconf import DictConfig
 from pathlib import Path
+import ppgs
 from pysepm.qualityMeasures import fwSNRseg, composite
 from pystoi import stoi
 import soundfile as sf
+import torch
 from tqdm import tqdm
 
 
@@ -34,11 +36,17 @@ def score_filtered(filtered_store):
             seg["Csig"] = csig
             seg["Cbak"] = cbak
             seg["Covl"] = covl
+        if "ppg_js" not in seg:
+            noisy_ppg = torch.load(seg["noisy_ppg"])
+            ref_ppg = torch.load(seg["ref_ppg"])
+
+            dist = ppgs.distance(noisy_ppg.squeeze(0), ref_ppg.squeeze(0))
+            seg["ppg_js"] = dist.item()
 
     with open(filtered_store, "w") as file:
         json.dump(filtered_segments, file, indent=4)
 
-    print_mets = ["stoi", "fwsegsnr", "Csig", "Cbak", "Covl"]
+    print_mets = ["ppg_js", "stoi", "fwsegsnr", "Csig", "Cbak", "Covl"]
 
     for thing in filtered_segments:
         name = Path(thing["noisy"]).stem
