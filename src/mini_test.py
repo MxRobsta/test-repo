@@ -9,10 +9,12 @@ def main(cfg: DictConfig):
 
     filtered_store = cfg.filtered_store
     listener = cfg.listener
-    audio_type = "noisy"
+    audio_type = cfg.experiment
     if listener is None:
         listener = "ground_truth"
         audio_type = "ref"
+    else:
+        listener += "_" + audio_type
 
     with open(filtered_store, "r") as file:
         segments = json.load(file)
@@ -23,6 +25,7 @@ def main(cfg: DictConfig):
             continue
 
         if "transcripts" in seg and listener in seg["transcripts"]:
+            print("hello")
             continue
 
         if audio_type == "ref":

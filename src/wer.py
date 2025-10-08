@@ -18,12 +18,23 @@ def main(cfg: DictConfig):
 
     wers = {}
 
+    all_exps = [
+        name
+        for seg in segments
+        for name in seg["transcripts"]
+        if name != "ground_truth"
+    ]
+    all_exps = list(set(all_exps))
+
     for seg in segments:
 
         transcripts = {
             name: x for name, x in seg["transcripts"].items() if name != "ground_truth"
         }
         gt = seg["transcripts"]["ground_truth"]
+
+        if not all(name in transcripts.keys() for name in all_exps):
+            continue
 
         for person, ts in transcripts.items():
             w = jiwer.wer(gt, ts)
@@ -35,10 +46,21 @@ def main(cfg: DictConfig):
 
     for person, wer in wers.items():
         plt.hist(wer)
-        plt.title(person)
+        plt.title(person + f"{sum(wer)/len(wer):.2f}")
         plt.xlabel("WER")
         plt.ylabel("Frequency")
         plt.savefig(wer_dir / f"{person}.png")
+        plt.close()
+
+    plt.plot(
+        [0, max(max(wers["robbie_noisy"]), max(wers["robbie_basesummed"]))],
+        [0, max(max(wers["robbie_noisy"]), max(wers["robbie_basesummed"]))],
+    )
+    plt.scatter(wers["robbie_noisy"], wers["robbie_basesummed"])
+    plt.title("Noisy vs RobbieBasesummed")
+    plt.xlabel("WER %")
+    plt.ylabel("WER %")
+    plt.savefig(wer_dir / "scatter.png")
 
 
 if __name__ == "__main__":

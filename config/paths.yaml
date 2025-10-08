@@ -15,3 +15,5 @@ filtered_file: ${paths.filtered_dir}/{session}.{device}.{pid}.{seg}.{start}_{end
 filtered_store: ${paths.scratch_dir}/metadata/filtered.json
 representation_dir: ${paths.scratch_dir}/{representation}/{dataset}
 representation_file: ${paths.representation_dir}/{session}.{device}.{pid}.{seg}.{start}_{end}.pt
+
+exp_session_file: ${paths.scratch_dir}/{exp}/{session}.{device}.{pid}.wav

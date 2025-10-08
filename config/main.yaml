@@ -24,3 +24,6 @@ stagger_min: 0.5 # min padding in seconds
 stagger_max: 1.5
 
 listener: null
+
+experiment: baseline
+exp_session_file: ${paths.exp_session_file}
