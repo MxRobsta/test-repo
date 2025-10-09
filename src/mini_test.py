@@ -25,8 +25,9 @@ def main(cfg: DictConfig):
             continue
 
         if "transcripts" in seg and listener in seg["transcripts"]:
-            print("hello")
             continue
+
+        input("PRESS ENTER TO CONTINUE")
 
         if audio_type == "ref":
             x = ""

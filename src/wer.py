@@ -2,6 +2,7 @@ import hydra
 import jiwer
 import json
 import matplotlib.pyplot as plt
+import numpy as np
 from omegaconf import DictConfig
 from pathlib import Path
 
@@ -44,23 +45,34 @@ def main(cfg: DictConfig):
             else:
                 wers[person].append(w)
 
-    for person, wer in wers.items():
-        plt.hist(wer)
-        plt.title(person + f"{sum(wer)/len(wer):.2f}")
-        plt.xlabel("WER")
-        plt.ylabel("Frequency")
-        plt.savefig(wer_dir / f"{person}.png")
-        plt.close()
+    noisy_mean = np.mean(wers["robbie_noisy"])
+    exp_mean = np.mean(wers[f"{cfg.listener}_{cfg.experiment}"])
 
     plt.plot(
-        [0, max(max(wers["robbie_noisy"]), max(wers["robbie_basesummed"]))],
-        [0, max(max(wers["robbie_noisy"]), max(wers["robbie_basesummed"]))],
+        [
+            0,
+            max(
+                max(wers["robbie_noisy"]), max(wers[f"{cfg.listener}_{cfg.experiment}"])
+            ),
+        ],
+        [
+            0,
+            max(
+                max(wers["robbie_noisy"]), max(wers[f"{cfg.listener}_{cfg.experiment}"])
+            ),
+        ],
     )
-    plt.scatter(wers["robbie_noisy"], wers["robbie_basesummed"])
-    plt.title("Noisy vs RobbieBasesummed")
-    plt.xlabel("WER %")
-    plt.ylabel("WER %")
+    plt.scatter(wers["robbie_noisy"], wers[f"{cfg.listener}_{cfg.experiment}"])
+    plt.title(f"Noisy vs {cfg.listener}_{cfg.experiment}")
+    plt.xlabel("Noisy WER %")
+    plt.ylabel(f"{cfg.listener}_{cfg.experiment} WER %")
+
+    plt.axvline(noisy_mean, color="r", label=f"Noisy={noisy_mean:.2%}")
+    plt.axhline(exp_mean, label=f"Exp={exp_mean:.2%}")
+    plt.legend()
+
     plt.savefig(wer_dir / "scatter.png")
+    plt.show()
 
 
 if __name__ == "__main__":
