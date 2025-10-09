@@ -25,7 +25,8 @@
             "robbie_noisy": "exactly",
             "robbie_baseline": "exactly",
             "robbie_basesummed": "exactly, i haven't even made eye contact with people",
-            "robbie_noisy_nopad": "made eye contact with people"
+            "robbie_noisy_nopad": "made eye contact with people",
+            "JPB_noisy_nopad": "Exactly"
         },
         "baseline": "data/mini_test/baseline/dev_04.ha.P116.164.27286634_27330090.wav",
         "basesummed": "data/mini_test/basesummed/dev_04.ha.P116.164.27286634_27330090.wav",
@@ -59,7 +60,8 @@
             "robbie_noisy": "did you see the new one",
             "robbie_baseline": "you see the new one",
             "robbie_basesummed": "you see the new one he's got",
-            "robbie_noisy_nopad": "very surprising you see the new one he was on"
+            "robbie_noisy_nopad": "very surprising you see the new one he was on",
+            "JPB_noisy_nopad": "See the new one"
         },
         "baseline": "data/mini_test/baseline/dev_11.ha.P183.206.28311156_28345396.wav",
         "basesummed": "data/mini_test/basesummed/dev_11.ha.P183.206.28311156_28345396.wav",
@@ -93,7 +95,8 @@
             "robbie_noisy": "no no no a time capsule is for people who aren't you",
             "robbie_baseline": "well no no no a time capsule is for people who aren't you",
             "robbie_basesummed": "no no no a time capsule is for people who aren't you",
-            "robbie_noisy_nopad": "no no no a time capsule is for people who aren't you"
+            "robbie_noisy_nopad": "no no no a time capsule is for people who aren't you",
+            "JPB_noisy_nopad": "No no no no time capsules are for people that aren't new"
         },
         "baseline": "data/mini_test/baseline/dev_05.ha.P124.3.552025_596505.wav",
         "basesummed": "data/mini_test/basesummed/dev_05.ha.P124.3.552025_596505.wav",
@@ -127,7 +130,8 @@
             "robbie_noisy": "i'm bad at painting",
             "robbie_baseline": "painting i could do painting, i'm bad at it",
             "robbie_basesummed": "no painting's good, i could do painting, i mean i'm bad at it",
-            "robbie_noisy_nopad": "painting is good i could do painting"
+            "robbie_noisy_nopad": "painting is good i could do painting",
+            "JPB_noisy_nopad": "I'm bad at painting"
         },
         "baseline": "data/mini_test/baseline/dev_10.aria.P179.22.2933439_3014271.wav",
         "basesummed": "data/mini_test/basesummed/dev_10.aria.P179.22.2933439_3014271.wav",
@@ -161,7 +165,8 @@
             "robbie_noisy": "yeah it's not quite a traditional art that came to mind",
             "robbie_baseline": "yeah it's not quite traditional art that came to mind",
             "robbie_basesummed": "yeah it's not quite a traditional art that came to mind",
-            "robbie_noisy_nopad": "yeah it's not quite a traditional art that came to mind"
+            "robbie_noisy_nopad": "yeah it's not quite a traditional art that came to mind",
+            "JPB_noisy_nopad": "Yeah that's not quite the traditional art that came to mind"
         },
         "baseline": "data/mini_test/baseline/dev_11.ha.P184.104.15924310_15964694.wav",
         "basesummed": "data/mini_test/basesummed/dev_11.ha.P184.104.15924310_15964694.wav",
@@ -195,7 +200,8 @@
             "robbie_noisy": "basically scroll on tiktok",
             "robbie_baseline": "yeah",
             "robbie_basesummed": "I struggle to get out of bed",
-            "robbie_noisy_nopad": ""
+            "robbie_noisy_nopad": "",
+            "JPB_noisy_nopad": "yeah again"
         },
         "baseline": "data/mini_test/baseline/dev_10.ha.P181.58.11487830_11541526.wav",
         "basesummed": "data/mini_test/basesummed/dev_10.ha.P181.58.11487830_11541526.wav",
@@ -229,7 +235,8 @@
             "robbie_noisy": "yeah and then they decide",
             "robbie_baseline": "yeah and then they decide what this place was",
             "robbie_basesummed": "and then they decide",
-            "robbie_noisy_nopad": "and then they decide like what"
+            "robbie_noisy_nopad": "and then they decide like what",
+            "JPB_noisy_nopad": "and then they decide who does what"
         },
         "baseline": "data/mini_test/baseline/dev_05.ha.P126.186.28840541_28905500.wav",
         "basesummed": "data/mini_test/basesummed/dev_05.ha.P126.186.28840541_28905500.wav",
@@ -263,7 +270,8 @@
             "robbie_noisy": "what if the glass gets like",
             "robbie_baseline": "",
             "robbie_basesummed": "or the glass gets like",
-            "robbie_noisy_nopad": ""
+            "robbie_noisy_nopad": "",
+            "JPB_noisy_nopad": "where they gone"
         },
         "baseline": "data/mini_test/baseline/dev_09.ha.P160.13.2972740_3009540.wav",
         "basesummed": "data/mini_test/basesummed/dev_09.ha.P160.13.2972740_3009540.wav",
@@ -297,7 +305,8 @@
             "robbie_noisy": "what would i say",
             "robbie_baseline": "oh that's a bit weird, for me to be honest",
             "robbie_basesummed": "I mean, for me to be honest",
-            "robbie_noisy_nopad": ""
+            "robbie_noisy_nopad": "",
+            "JPB_noisy_nopad": "i say for me to be honest"
         },
         "baseline": "data/mini_test/baseline/dev_11.aria.P186.160.26898787_26946851.wav",
         "basesummed": "data/mini_test/basesummed/dev_11.aria.P186.160.26898787_26946851.wav",
@@ -331,7 +340,8 @@
             "robbie_noisy": "but you know you buy good quality chalk",
             "robbie_baseline": "do you buy good quality chalk",
             "robbie_basesummed": "you buy good quality chalk, could we do markers please",
-            "robbie_noisy_nopad": "you buy good quality chalk cna we do marker's please"
+            "robbie_noisy_nopad": "you buy good quality chalk cna we do marker's please",
+            "JPB_noisy_nopad": "you buy good quality chalk there's something"
         },
         "baseline": "data/mini_test/baseline/dev_10.ha.P182.68.14227014_14302726.wav",
         "basesummed": "data/mini_test/basesummed/dev_10.ha.P182.68.14227014_14302726.wav",
@@ -365,7 +375,8 @@
             "robbie_noisy": "it was good in lockdown",
             "robbie_baseline": "it was good enough",
             "robbie_basesummed": "it was good in lockdown then it just kinda got worse",
-            "robbie_noisy_nopad": "it was good in lockdown and then it just kinda got worse"
+            "robbie_noisy_nopad": "it was good in lockdown and then it just kinda got worse",
+            "JPB_noisy_nopad": "during lockdown clockwork"
         },
         "baseline": "data/mini_test/baseline/dev_12.aria.P190.118.13993885_14059356.wav",
         "basesummed": "data/mini_test/basesummed/dev_12.aria.P190.118.13993885_14059356.wav",
@@ -430,7 +441,8 @@
             "robbie_noisy": "don't watch she hulk",
             "robbie_baseline": "dont watch she hulk",
             "robbie_basesummed": "don't watch she hulk",
-            "robbie_noisy_nopad": "wanda-vision is actually fantastic"
+            "robbie_noisy_nopad": "wanda-vision is actually fantastic",
+            "JPB_noisy_nopad": "yeah"
         },
         "baseline": "data/mini_test/baseline/dev_12.ha.P189.115.18335315_18368531.wav",
         "basesummed": "data/mini_test/basesummed/dev_12.ha.P189.115.18335315_18368531.wav",
@@ -464,7 +476,8 @@
             "robbie_noisy": "i'm not going to direct it, i'm going to write for ti",
             "robbie_baseline": "is that general advice ot",
             "robbie_basesummed": "if that general advice",
-            "robbie_noisy_nopad": "i don't want to direct it i want to write for it"
+            "robbie_noisy_nopad": "i don't want to direct it i want to write for it",
+            "JPB_noisy_nopad": "I want to fight for it"
         },
         "baseline": "data/mini_test/baseline/dev_05.ha.P124.261.32415279_32458735.wav",
         "basesummed": "data/mini_test/basesummed/dev_05.ha.P124.261.32415279_32458735.wav",
@@ -498,7 +511,8 @@
             "robbie_noisy": "ginger nut creams are so good",
             "robbie_baseline": "are so good",
             "robbie_basesummed": "ginger nut cruise are so good",
-            "robbie_noisy_nopad": "ginger nut creams are so good"
+            "robbie_noisy_nopad": "ginger nut creams are so good",
+            "JPB_noisy_nopad": "cruise that's so good"
         },
         "baseline": "data/mini_test/baseline/dev_12.aria.P189.73.11538804_11578676.wav",
         "basesummed": "data/mini_test/basesummed/dev_12.aria.P189.73.11538804_11578676.wav",
@@ -532,7 +546,8 @@
             "robbie_noisy": "streaming services and what's it called, vinyl",
             "robbie_baseline": "top ten people",
             "robbie_basesummed": "student services, i got a game, top ten people",
-            "robbie_noisy_nopad": "i got a game, top ten people who"
+            "robbie_noisy_nopad": "i got a game, top ten people who",
+            "JPB_noisy_nopad": "the difference is between those and what's it called"
         },
         "baseline": "data/mini_test/baseline/dev_09.aria.P162.31.3676309_3758677.wav",
         "basesummed": "data/mini_test/basesummed/dev_09.aria.P162.31.3676309_3758677.wav",
@@ -566,7 +581,8 @@
             "robbie_noisy": "generic halloween, like skeleton",
             "robbie_baseline": "a skeleton costume",
             "robbie_basesummed": "generic for halloween, like a skeleton or something",
-            "robbie_noisy_nopad": "i would've been something generic for halloween like a skeleton"
+            "robbie_noisy_nopad": "i would've been something generic for halloween like a skeleton",
+            "JPB_noisy_nopad": "halloween like a skeleton"
         },
         "baseline": "data/mini_test/baseline/dev_11.aria.P186.28.3263655_3338343.wav",
         "basesummed": "data/mini_test/basesummed/dev_11.aria.P186.28.3263655_3338343.wav",
@@ -600,7 +616,8 @@
             "robbie_noisy": "decorate like a ",
             "robbie_baseline": "",
             "robbie_basesummed": "like a candle",
-            "robbie_noisy_nopad": "just decorate like a candle"
+            "robbie_noisy_nopad": "just decorate like a candle",
+            "JPB_noisy_nopad": "like a kendal"
         },
         "baseline": "data/mini_test/baseline/dev_02.aria.P094.81.15286794_15348170.wav",
         "basesummed": "data/mini_test/basesummed/dev_02.aria.P094.81.15286794_15348170.wav",
@@ -634,7 +651,8 @@
             "robbie_noisy": "is it in the rules",
             "robbie_baseline": "yeah my bad",
             "robbie_basesummed": "yeah my bad funny isn't political",
-            "robbie_noisy_nopad": "is it in the rules my bad"
+            "robbie_noisy_nopad": "is it in the rules my bad",
+            "JPB_noisy_nopad": "bad"
         },
         "baseline": "data/mini_test/baseline/dev_10.ha.P179.249.34591303_34640903.wav",
         "basesummed": "data/mini_test/basesummed/dev_10.ha.P179.249.34591303_34640903.wav",
@@ -699,7 +717,8 @@
             "robbie_noisy": "like taekwondo is that an art form?",
             "robbie_baseline": "taekwondo is that an art it's a martial art",
             "robbie_basesummed": "taekwondo is that an art form a martial art",
-            "robbie_noisy_nopad": "taekwondo is that an art form a martial art"
+            "robbie_noisy_nopad": "taekwondo is that an art form a martial art",
+            "JPB_noisy_nopad": "twaikondo is that an art"
         },
         "baseline": "data/mini_test/baseline/dev_11.aria.P186.96.15779344_15841744.wav",
         "basesummed": "data/mini_test/basesummed/dev_11.aria.P186.96.15779344_15841744.wav",
@@ -733,7 +752,8 @@
             "robbie_noisy": "",
             "robbie_baseline": "",
             "robbie_basesummed": "i've not seen",
-            "robbie_noisy_nopad": ""
+            "robbie_noisy_nopad": "",
+            "JPB_noisy_nopad": "I I I"
         },
         "baseline": "data/mini_test/baseline/dev_11.aria.P183.152.20415646_20448862.wav",
         "basesummed": "data/mini_test/basesummed/dev_11.aria.P183.152.20415646_20448862.wav",
@@ -798,7 +818,8 @@
             "robbie_noisy": "until it blows over and then it's maybe the funniest thing that's ever happened",
             "robbie_baseline": "until it blows over and then it's maybe the funniest thing that ever happened",
             "robbie_basesummed": "until it blows over and then it's maybe the funniest thing that ever happened",
-            "robbie_noisy_nopad": "until it blows over and then it's maybe the funniest thing that ever happened"
+            "robbie_noisy_nopad": "until it blows over and then it's maybe the funniest thing that ever happened",
+            "JPB_noisy_nopad": "till it blows over maybe the funniest thing that ever happened"
         },
         "baseline": "data/mini_test/baseline/dev_10.aria.P179.31.4080356_4151972.wav",
         "basesummed": "data/mini_test/basesummed/dev_10.aria.P179.31.4080356_4151972.wav",
@@ -832,7 +853,8 @@
             "robbie_noisy": "at the cute stage or the annoying stage",
             "robbie_baseline": "still at the cut stage or the annoyign stage",
             "robbie_basesummed": "still at the cute stage or the annoying stage",
-            "robbie_noisy_nopad": "still at the cute stage or at like the annoying stage"
+            "robbie_noisy_nopad": "still at the cute stage or at like the annoying stage",
+            "JPB_noisy_nopad": "stage true true"
         },
         "baseline": "data/mini_test/baseline/dev_07.aria.P150.136.18183722_18239978.wav",
         "basesummed": "data/mini_test/basesummed/dev_07.aria.P150.136.18183722_18239978.wav",
@@ -866,7 +888,8 @@
             "robbie_noisy": "learn together i mean how many group art things are there",
             "robbie_baseline": "how many are there",
             "robbie_basesummed": "learn together i mean how many group art things are there",
-            "robbie_noisy_nopad": "to learn together i mean how many group art form things are there"
+            "robbie_noisy_nopad": "to learn together i mean how many group art form things are there",
+            "JPB_noisy_nopad": "I mean how many art things are there"
         },
         "baseline": "data/mini_test/baseline/dev_11.aria.P185.122.19274402_19333218.wav",
         "basesummed": "data/mini_test/basesummed/dev_11.aria.P185.122.19274402_19333218.wav",
@@ -900,7 +923,8 @@
             "robbie_noisy": "i had a friend who used to go around offering ninety five percent",
             "robbie_baseline": "i have a friend who used to go around offering ninety five",
             "robbie_basesummed": "i had a friend who used to go around offering ninety five",
-            "robbie_noisy_nopad": "i had a friend who used to go round offering ninety five"
+            "robbie_noisy_nopad": "i had a friend who used to go round offering ninety five",
+            "JPB_noisy_nopad": "I had a friend who used to go offering people ninety five pounds"
         },
         "baseline": "data/mini_test/baseline/dev_06.aria.P132.117.23000784_23085712.wav",
         "basesummed": "data/mini_test/basesummed/dev_06.aria.P132.117.23000784_23085712.wav",
@@ -934,7 +958,8 @@
             "robbie_noisy": "depends on the season that you're changing from",
             "robbie_baseline": "depends on the season that your changing from",
             "robbie_basesummed": "are you very anti season",
-            "robbie_noisy_nopad": "depends on the season"
+            "robbie_noisy_nopad": "depends on the season",
+            "JPB_noisy_nopad": "though"
         },
         "baseline": "data/mini_test/baseline/dev_03.ha.P096.100.18420301_18476557.wav",
         "basesummed": "data/mini_test/basesummed/dev_03.ha.P096.100.18420301_18476557.wav",
@@ -968,7 +993,8 @@
             "robbie_noisy": "maybe the soundtrack of some korean drama",
             "robbie_baseline": "maybe the soundtrack of some korean",
             "robbie_basesummed": "maybe the soundtrack of some korean drama",
-            "robbie_noisy_nopad": "the soundtrack of some korean"
+            "robbie_noisy_nopad": "the soundtrack of some korean",
+            "JPB_noisy_nopad": "need the soundtrack of some korean "
         },
         "baseline": "data/mini_test/baseline/dev_02.aria.P094.11.1945736_1992776.wav",
         "basesummed": "data/mini_test/basesummed/dev_02.aria.P094.11.1945736_1992776.wav",
@@ -1002,7 +1028,8 @@
             "robbie_noisy": "you're coupled up",
             "robbie_baseline": "",
             "robbie_basesummed": "",
-            "robbie_noisy_nopad": ""
+            "robbie_noisy_nopad": "",
+            "JPB_noisy_nopad": "cover"
         },
         "baseline": "data/mini_test/baseline/dev_04.ha.P116.81.13679694_13718030.wav",
         "basesummed": "data/mini_test/basesummed/dev_04.ha.P116.81.13679694_13718030.wav",
@@ -1036,7 +1063,8 @@
             "robbie_noisy": "it's like plus ten charisma",
             "robbie_baseline": "having an easel",
             "robbie_basesummed": "having and easel is like plus ten charisma",
-            "robbie_noisy_nopad": "having an easel is like plus ten charisma isn't it"
+            "robbie_noisy_nopad": "having an easel is like plus ten charisma isn't it",
+            "JPB_noisy_nopad": "life it's like plus ten charisma isn't it"
         },
         "baseline": "data/mini_test/baseline/dev_10.aria.P180.31.4004564_4085908.wav",
         "basesummed": "data/mini_test/basesummed/dev_10.aria.P180.31.4004564_4085908.wav",
@@ -1070,7 +1098,8 @@
             "robbie_noisy": "i love a squat",
             "robbie_baseline": "",
             "robbie_basesummed": "",
-            "robbie_noisy_nopad": "i love a squat"
+            "robbie_noisy_nopad": "i love a squat",
+            "JPB_noisy_nopad": "I love a squat"
         },
         "baseline": "data/mini_test/baseline/dev_07.aria.P150.193.25835264_25872576.wav",
         "basesummed": "data/mini_test/basesummed/dev_07.aria.P150.193.25835264_25872576.wav",
@@ -1135,7 +1164,8 @@
             "robbie_noisy": "board game mechanic",
             "robbie_baseline": "",
             "robbie_basesummed": "like mechanic, i mean",
-            "robbie_noisy_nopad": "mechanic"
+            "robbie_noisy_nopad": "mechanic",
+            "JPB_noisy_nopad": "mechanics"
         },
         "baseline": "data/mini_test/baseline/dev_05.ha.P124.79.8952424_8995880.wav",
         "basesummed": "data/mini_test/basesummed/dev_05.ha.P124.79.8952424_8995880.wav",
@@ -1169,7 +1199,8 @@
             "robbie_noisy": "",
             "robbie_baseline": "or progesterone",
             "robbie_basesummed": "or estrogen or progesterone, it coul dbe men or women",
-            "robbie_noisy_nopad": "or progesterone you know could be men or women"
+            "robbie_noisy_nopad": "or progesterone you know could be men or women",
+            "JPB_noisy_nopad": "all of them yeah its"
         },
         "baseline": "data/mini_test/baseline/dev_09.ha.P161.45.6245986_6336034.wav",
         "basesummed": "data/mini_test/basesummed/dev_09.ha.P161.45.6245986_6336034.wav",
@@ -1234,7 +1265,8 @@
             "robbie_noisy": "i know what you mean but I don't know the name of it",
             "robbie_baseline": "i would never want to touch that",
             "robbie_basesummed": "i know what you mean but i don't know the name of it",
-            "robbie_noisy_nopad": "i know what you mean but i don't know the name of it"
+            "robbie_noisy_nopad": "i know what you mean but i don't know the name of it",
+            "JPB_noisy_nopad": "I know what you mean but I don't know the name of it"
         },
         "baseline": "data/mini_test/baseline/dev_12.ha.P190.15.1977460_2011700.wav",
         "basesummed": "data/mini_test/basesummed/dev_12.ha.P190.15.1977460_2011700.wav",
@@ -1268,7 +1300,8 @@
             "robbie_noisy": "let's do a scrapbook",
             "robbie_baseline": "you could do a scrapbook",
             "robbie_basesummed": "yeah let's do scrapbooks, you can print out a photo",
-            "robbie_noisy_nopad": "let's do a scrapbook"
+            "robbie_noisy_nopad": "let's do a scrapbook",
+            "JPB_noisy_nopad": "scrapbook you could print out"
         },
         "baseline": "data/mini_test/baseline/dev_04.aria.P118.230.32523834_32567802.wav",
         "basesummed": "data/mini_test/basesummed/dev_04.aria.P118.230.32523834_32567802.wav",
@@ -1302,7 +1335,8 @@
             "robbie_noisy": "sounds like a poem",
             "robbie_baseline": "oh yeah that's ture",
             "robbie_basesummed": "that sounds like a poem",
-            "robbie_noisy_nopad": "litter-picking"
+            "robbie_noisy_nopad": "litter-picking",
+            "JPB_noisy_nopad": "sounds like a poem oh yeah that's true"
         },
         "baseline": "data/mini_test/baseline/dev_04.ha.P116.13.2258539_2322475.wav",
         "basesummed": "data/mini_test/basesummed/dev_04.ha.P116.13.2258539_2322475.wav",
@@ -1336,7 +1370,8 @@
             "robbie_noisy": "not like the main uni side, we have like a research centre",
             "robbie_baseline": "not like the main uni side, there's like a research sector",
             "robbie_basesummed": "not like the main uni side we have like a research centre",
-            "robbie_noisy_nopad": "not like the main uni side, we have like a research centre"
+            "robbie_noisy_nopad": "not like the main uni side, we have like a research centre",
+            "JPB_noisy_nopad": "not like the main uni though we have like a research centre"
         },
         "baseline": "data/mini_test/baseline/dev_07.aria.P148.11.1847438_1962062.wav",
         "basesummed": "data/mini_test/basesummed/dev_07.aria.P148.11.1847438_1962062.wav",
@@ -1370,7 +1405,8 @@
             "robbie_noisy": "piano's nice like there's pianos everywhere",
             "robbie_baseline": "i was gonna say pianos nice, like there's pianos everywhere in public",
             "robbie_basesummed": "i was gonna say like piano's nice, there's pianos everywhere like in public as well",
-            "robbie_noisy_nopad": "piano's nice like there's pianos everywhere like in public as well"
+            "robbie_noisy_nopad": "piano's nice like there's pianos everywhere like in public as well",
+            "JPB_noisy_nopad": "say cannons everywhere"
         },
         "baseline": "data/mini_test/baseline/dev_11.ha.P184.88.13079124_13159956.wav",
         "basesummed": "data/mini_test/basesummed/dev_11.ha.P184.88.13079124_13159956.wav",
@@ -1404,7 +1440,8 @@
             "robbie_noisy": "you're too caught up",
             "robbie_baseline": "",
             "robbie_basesummed": "you're too caught up you're too caught up in",
-            "robbie_noisy_nopad": "you're too caught up in"
+            "robbie_noisy_nopad": "you're too caught up in",
+            "JPB_noisy_nopad": "you're too caught up in you're too caught"
         },
         "baseline": "data/mini_test/baseline/dev_09.ha.P160.140.31094337_31169537.wav",
         "basesummed": "data/mini_test/basesummed/dev_09.ha.P160.140.31094337_31169537.wav",
@@ -1469,7 +1506,8 @@
             "robbie_noisy": "you get like about four hours of sleep",
             "robbie_baseline": "get like 24 hours of sleep",
             "robbie_basesummed": "you get like about four hours of sleep",
-            "robbie_noisy_nopad": "get like about four hours of sleep"
+            "robbie_noisy_nopad": "get like about four hours of sleep",
+            "JPB_noisy_nopad": "get like about four hours of sleep yeah well"
         },
         "baseline": "data/mini_test/baseline/dev_05.ha.P124.234.29099082_29167626.wav",
         "basesummed": "data/mini_test/basesummed/dev_05.ha.P124.234.29099082_29167626.wav",
@@ -1503,7 +1541,8 @@
             "robbie_noisy": "you feel it near the end",
             "robbie_baseline": "you feel it near the end",
             "robbie_basesummed": "you feel it near the end",
-            "robbie_noisy_nopad": "i fell like you do feel it"
+            "robbie_noisy_nopad": "i fell like you do feel it",
+            "JPB_noisy_nopad": "you feel it near the end"
         },
         "baseline": "data/mini_test/baseline/dev_11.ha.P185.169.27643476_27729428.wav",
         "basesummed": "data/mini_test/basesummed/dev_11.ha.P185.169.27643476_27729428.wav",
@@ -1537,7 +1576,8 @@
             "robbie_noisy": "if money was not a factor, getting a job was not a factor",
             "robbie_baseline": "if money was not a facotr, getting a job was not a factor",
             "robbie_basesummed": "if money was not a factor, getting a job was not a factor",
-            "robbie_noisy_nopad": "if money was not a factor, getting a job was not a factor"
+            "robbie_noisy_nopad": "if money was not a factor, getting a job was not a factor",
+            "JPB_noisy_nopad": "if money was not a factor getting a job was not a factor"
         },
         "baseline": "data/mini_test/baseline/dev_05.aria.P126.67.12065728_12136320.wav",
         "basesummed": "data/mini_test/basesummed/dev_05.aria.P126.67.12065728_12136320.wav",
@@ -1571,7 +1611,8 @@
             "robbie_noisy": "what's the triangle thing",
             "robbie_baseline": "what's the triangle thing somosas",
             "robbie_basesummed": "what's the triangle thing, somosas",
-            "robbie_noisy_nopad": "somosas"
+            "robbie_noisy_nopad": "somosas",
+            "JPB_noisy_nopad": "try that thing glasses"
         },
         "baseline": "data/mini_test/baseline/dev_07.aria.P150.131.17420318_17477598.wav",
         "basesummed": "data/mini_test/basesummed/dev_07.aria.P150.131.17420318_17477598.wav",
@@ -1605,7 +1646,8 @@
             "robbie_noisy": "i didn't read much in secondary, wait there was a second book called brothers",
             "robbie_baseline": "",
             "robbie_basesummed": "i didn't read much in secondard, wait there was a book called brothers",
-            "robbie_noisy_nopad": "wait there was a book called brother's i think"
+            "robbie_noisy_nopad": "wait there was a book called brother's i think",
+            "JPB_noisy_nopad": "there was a book called"
         },
         "baseline": "data/mini_test/baseline/dev_11.ha.P183.218.29609076_29700148.wav",
         "basesummed": "data/mini_test/basesummed/dev_11.ha.P183.218.29609076_29700148.wav",
@@ -1670,7 +1712,8 @@
             "robbie_noisy": "people say",
             "robbie_baseline": "people say they don't work too well with music",
             "robbie_basesummed": "interesting experiment, people say it doesn't work too well with music",
-            "robbie_noisy_nopad": "people say"
+            "robbie_noisy_nopad": "people say",
+            "JPB_noisy_nopad": "people say too well"
         },
         "baseline": "data/mini_test/baseline/dev_03.aria.P097.13.3164869_3202693.wav",
         "basesummed": "data/mini_test/basesummed/dev_03.aria.P097.13.3164869_3202693.wav",
