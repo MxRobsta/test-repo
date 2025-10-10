@@ -1,113 +1,137 @@
-from glob import glob
+import csv
 import hydra
 import json
 import numpy as np
 from omegaconf import DictConfig
-from pathlib import Path
 import os
-import shutil
+from pathlib import Path
+import soundfile as sf
+
+from utils import load_refaudio, rms_norm
+
+TARGET_FS = 16000
+MIN_DURATION = TARGET_FS * 2
+TARGET_SEGMENTS = 12
+PADDING = 5 * TARGET_FS
+TMP_PATH = "scratch/tmp.wav"
 
 
-MIN_DURATION = 16000 * 2
-
-
-def filter_segments(
-    noisy_seg_file: str,
-    ref_seg_file: str,
-    filtered_file: str,
+def user_filter(
+    sessions_file: str,
+    segments_file: str,
+    session_ref_template: str,
+    rainbow_template: str,
     filtered_store: str,
 ):
-    noisy_match = noisy_seg_file.format(
-        device="*", dataset="*", session="*", pid="*", seg="*", start="*", end="*"
+
+    if not Path(filtered_store).exists():
+        filtered_segments = []
+    else:
+        with open(filtered_store, "r") as file:
+            filtered_segments = json.load(file)
+
+    seen_sesspids = [f"{x['session']}_{x['pid']}" for x in filtered_segments]
+
+    RNG = np.random.default_rng()
+
+    sessions_file = sessions_file.format(dataset="dev")
+    with open(sessions_file, "r") as file:
+        session_info = list(csv.DictReader(file))
+
+    while True:
+        target_session = RNG.choice(session_info)
+        session = target_session["session"]
+        wearer_positions = [target_session["ha_pos"], target_session["aria_pos"]]
+        pid = RNG.choice(
+            [
+                target_session[f"pos{i}"]
+                for i in range(1, 5)
+                if i not in wearer_positions
+            ]
+        )
+        device = RNG.choice(["ha", "aria"])
+
+        if f"{session}_{pid}" not in seen_sesspids:
+            break
+
+    print(f"Filtering for:\n\nSession: {session}\nPID: {pid}\nDevice: {device}")
+    os.system("play " + rainbow_template.format(dataset="dev", pid=pid))
+    input("\nPress ENTER to begin")
+
+    filtered_segments.append(
+        {
+            "session": target_session["session"],
+            "pid": pid,
+            "device": device,
+            "segments": [],
+        }
     )
 
-    noisy_files = glob(noisy_match)
-    np.random.shuffle(noisy_files)
+    segments_file = segments_file.format(
+        dataset="dev", session=session, device=device, pid=pid
+    )
 
-    if Path(filtered_store).exists():
-        with open(filtered_store, "r") as file:
-            selected = json.load(file)
-    else:
-        selected = []
-
-    for noisy in noisy_files:
-        if any(noisy == x["noisy"] for x in selected):
-            continue
-
-        fname = Path(noisy).stem
-        session, device, pid, seg, start_end = fname.split(".")
-
-        start, end = [int(a) for a in start_end.split("_")]
-
-        if end - start < MIN_DURATION:
-            continue
-
-        split = session.split("_")[0]
-        ref = ref_seg_file.format(
-            device=device,
-            dataset=split,
-            session=session,
-            pid=pid,
-            seg=seg,
-            start=start,
-            end=end,
+    with open(segments_file, "r") as file:
+        speech_segments = list(
+            csv.DictReader(file, fieldnames=["index", "start", "end"])
         )
 
-        if not os.path.exists(ref):
+    RNG.shuffle(speech_segments)
+
+    ref_audio, fs = load_refaudio(
+        session_ref_template, session, device, [f"pos{i}" for i in range(1, 5)]
+    )
+
+    while len(filtered_segments[-1]["segments"]) < TARGET_SEGMENTS:
+        this_seg = speech_segments.pop(0)
+        index = int(this_seg["index"])
+        start = int(this_seg["start"])
+        end = int(this_seg["end"])
+
+        if (end - start) < MIN_DURATION:
             continue
 
-        os.system("play " + noisy + " gain -n")
-        os.system("play " + ref + " gain -n")
+        pad_start = start - PADDING
+        audio_snippet = rms_norm(ref_audio[pad_start:end], 0.05)
+        sf.write(TMP_PATH, audio_snippet, TARGET_FS)
+        os.system("play " + TMP_PATH)
         x = input()
 
-        if len(x) > 0:
-            duration = (end - start) / 16000
-            selected.append(
-                {
-                    "noisy": noisy,
-                    "ref": ref,
-                    "duration": duration,
-                    "session": session,
-                    "device": device,
-                    "target": pid,
-                    "start": start,
-                    "end": end,
-                }
-            )
-            print(f"You have currently selected {len(selected)} files.")
-            with open(filtered_store, "w") as file:
-                json.dump(selected, file, indent=4)
+        if len(x) == 0:
+            continue
 
-            filtered_fpath = filtered_file.format(
-                device=device,
-                dataset=split,
-                session=session,
-                pid=pid,
-                seg=seg,
-                start=start,
-                end=end,
-            )
+        start_time = start / 16000
+        end_time = end / 16000
 
-            if not Path(filtered_fpath).parent.exists():
-                Path(filtered_fpath).parent.mkdir(parents=True)
+        filtered_segments[-1]["segments"].append(
+            {
+                "index": index,
+                "speech": {
+                    "start_sample": start,
+                    "end_sample": end,
+                    "start_time": start_time,
+                    "end_time": end_time,
+                },
+                "context": {"start_time": start_time, "end_time": end_time},
+            }
+        )
 
-            shutil.copyfile(noisy, filtered_fpath)
-            filtered_fpath = filtered_file.format(
-                device=device + "_ref",
-                dataset=split,
-                session=session,
-                pid=pid,
-                seg=seg,
-                start=start,
-                end=end,
-            )
-            shutil.copyfile(ref, filtered_fpath)
+        with open(filtered_store, "w") as file:
+            json.dump(filtered_segments, file, indent=2)
+
+        print(
+            f"\nSegments found: {len(filtered_segments[-1]['segments'])}/{TARGET_SEGMENTS}"
+        )
 
 
-@hydra.main(version_base=None, config_path="../config", config_name="filter")
+@hydra.main(version_base=None, config_path="../config", config_name="main")
 def main(cfg: DictConfig):
-    filter_segments(
-        cfg.noisy_seg_file, cfg.ref_seg_file, cfg.filtered_file, cfg.filtered_store
+    user_filter(
+        cfg.sessions_file,
+        cfg.segments_file,
+        cfg.ref_session_file,
+        cfg.rainbow_file,
+        cfg.filtered_store,
     )
 
 
