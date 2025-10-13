@@ -3,7 +3,9 @@ import soundfile as sf
 import soxr
 
 
-def load_refaudio(ftemplate, session, device, pids, dataset="dev", target_sr=16000):
+def load_refaudio(
+    ftemplate, session, device, pids, dataset="dev", target_sr=16000, normalize=None
+):
     if isinstance(pids, str):
         fpath = ftemplate.format(
             dataset=dataset, session=session, device=device, pid=pids
@@ -23,6 +25,8 @@ def load_refaudio(ftemplate, session, device, pids, dataset="dev", target_sr=160
         if fs != target_sr:
             audio = soxr.resample(audio, fs, target_sr)
             fs = target_sr
+        if normalize:
+            audio = rms_norm(audio, normalize)
 
         if i == 0:
             output = audio

@@ -41,7 +41,10 @@ def user_filter(
     while True:
         target_session = RNG.choice(session_info)
         session = target_session["session"]
-        wearer_positions = [target_session["ha_pos"], target_session["aria_pos"]]
+        wearer_positions = [
+            int(target_session["ha_pos"]),
+            int(target_session["aria_pos"]),
+        ]
         pid = RNG.choice(
             [
                 target_session[f"pos{i}"]

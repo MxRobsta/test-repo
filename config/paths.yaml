@@ -6,7 +6,7 @@ sessions_file: ${paths.chime9_dir}/metadata/sessions.{dataset}.csv
 
 rainbow_file: ${paths.chime9_dir}/participant/{dataset}/{pid}.wav
 noisy_session_file: ${paths.chime9_dir}/{device}/{dataset}/{session}.{device}.wav
-ref_session_file: ${paths.chime9_dir}/ct/{dataset}/{session}.ct_{pid}.wav
+ref_session_file: ${paths.chime9_dir}/ref/{dataset}/{session}.{device}.{pid}.wav
 segments_file: ${paths.chime9_dir}/metadata/ref/{dataset}/{session}.{device}.{pid}.csv
 
 noisy_seg_file: ${paths.scratch_dir}/{device}/{dataset}/{session}.{device}.{pid}.{seg}.{start}_{end}.wav
@@ -15,7 +15,10 @@ ref_seg_file: ${paths.scratch_dir}/ref/{dataset}/{session}.{device}_ref.{pid}.{s
 filtered_dir: ${paths.minitest_dir}/{system}
 filtered_file: ${paths.filtered_dir}/{session}.{device}.{pid}.{seg}.{start}_{end}.wav
 filtered_store: ${paths.minitest_dir}/segments.json
+tsv_dir: ${paths.minitest_dir}/tsv
 representation_dir: ${paths.scratch_dir}/{representation}/{dataset}
 representation_file: ${paths.representation_dir}/{session}.{device}.{pid}.{seg}.{start}_{end}.pt
 
 exp_session_file: ${paths.scratch_dir}/{exp}/{session}.{device}.{pid}.wav
+
+animations_file: ${paths.minitest_dir}/animations/{session}.{device}.{pid}.{seg}.mp4
