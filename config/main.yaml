@@ -5,7 +5,6 @@ defaults:
 noisy_seg_file: ${paths.noisy_seg_file}
 ref_seg_file: ${paths.ref_seg_file}
 
-filtered_file: ${paths.filtered_file}
 filtered_store: ${paths.filtered_store}
 tsv_dir: ${paths.tsv_dir}
 
@@ -28,3 +27,5 @@ listener: ???
 
 experiment: baseline
 exp_session_file: ${paths.exp_session_file}
+exp_segment_video: ${paths.exp_segment_video}
+exp_segment_audio: ${paths.exp_segment_audio}

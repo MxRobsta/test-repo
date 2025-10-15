@@ -16,7 +16,9 @@ PLOT_FS = 500
 
 
 def animate(snippet, target_start, fpath):
-    fig, ax = plt.subplots(figsize=[10, 2])
+
+    fig, ax = plt.subplots(figsize=[6, 2])
+    ax.axis("off")
     (line1,) = ax.plot([], [], "tab:blue")
 
     snippet /= np.max(np.absolute(snippet))
@@ -57,7 +59,7 @@ def animate(snippet, target_start, fpath):
         Path(fpath).parent.mkdir(parents=True)
 
     ani.save(fpath, writer="ffmpeg", fps=1 / dt)
-    plt.close()
+    plt.close(fig)
 
 
 @hydra.main(version_base=None, config_path="../config", config_name="main")
