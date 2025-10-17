@@ -36,21 +36,17 @@ def user_filter(
 
     sessions_file = sessions_file.format(dataset="dev")
     with open(sessions_file, "r") as file:
-        session_info = list(csv.DictReader(file))
+        session_csv = list(csv.DictReader(file))
 
     while True:
-        target_session = RNG.choice(session_info)
-        session = target_session["session"]
+        session_info = RNG.choice(session_csv)
+        session = session_info["session"]
         wearer_positions = [
-            int(target_session["ha_pos"]),
-            int(target_session["aria_pos"]),
+            int(session_info["ha_pos"]),
+            int(session_info["aria_pos"]),
         ]
         pid = RNG.choice(
-            [
-                target_session[f"pos{i}"]
-                for i in range(1, 5)
-                if i not in wearer_positions
-            ]
+            [session_info[f"pos{i}"] for i in range(1, 5) if i not in wearer_positions]
         )
         device = RNG.choice(["ha", "aria"])
 
@@ -63,7 +59,7 @@ def user_filter(
 
     filtered_segments.append(
         {
-            "session": target_session["session"],
+            "session": session,
             "pid": pid,
             "device": device,
             "segments": [],
@@ -81,11 +77,16 @@ def user_filter(
 
     RNG.shuffle(speech_segments)
 
+    wearer_pos = int(session_info[f"{device}_pos"])
     ref_audio, fs = load_refaudio(
-        session_ref_template, session, device, [f"pos{i}" for i in range(1, 5)]
+        session_ref_template,
+        session,
+        device,
+        [f"pos{i}" for i in range(1, 5) if i != wearer_pos],
     )
 
     while len(filtered_segments[-1]["segments"]) < TARGET_SEGMENTS:
+
         this_seg = speech_segments.pop(0)
         index = int(this_seg["index"])
         start = int(this_seg["start"])
@@ -93,6 +94,11 @@ def user_filter(
 
         if (end - start) < MIN_DURATION:
             continue
+
+        print(f"Segments remaining: {len(speech_segments)}")
+        print(
+            f"Segments found: {len(filtered_segments[-1]['segments'])}/{TARGET_SEGMENTS}\n"
+        )
 
         pad_start = start - PADDING
         audio_snippet = rms_norm(ref_audio[pad_start:end], 0.05)
@@ -108,6 +114,7 @@ def user_filter(
 
         filtered_segments[-1]["segments"].append(
             {
+                "key": f"{session}.{device}.{pid}.{index}",
                 "index": index,
                 "speech": {
                     "start_sample": start,
@@ -115,16 +122,12 @@ def user_filter(
                     "start_time": start_time,
                     "end_time": end_time,
                 },
-                "context": {"start_time": start_time, "end_time": end_time},
+                "context": {"start_time": pad_start // 16000, "end_time": end_time},
             }
         )
 
         with open(filtered_store, "w") as file:
-            json.dump(filtered_segments, file, indent=2)
-
-        print(
-            f"\nSegments found: {len(filtered_segments[-1]['segments'])}/{TARGET_SEGMENTS}"
-        )
+            json.dump(filtered_segments, file, indent=4)
 
 
 @hydra.main(version_base=None, config_path="../config", config_name="main")

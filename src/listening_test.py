@@ -63,6 +63,7 @@ def show_rainbow(rainbow_ftemplate):
     speaker = int(get_current().split()[1])
 
     pid = SEGMENTS[speaker]["pid"]
+    st.header("Clean speech sample for " + pid)
     st.audio(rainbow_ftemplate.format(dataset="dev", pid=pid))
 
 
@@ -85,19 +86,21 @@ def show_sample(segment_ftemplate):
         seg=segment["index"],
     )
 
-    st.video(fpath, "video/mp4")
-
     cola, colb = st.columns(2)
 
     with cola:
         st.write("**Prior Transcript**")
-        st.write(segment["prespeech"])
+        print(segment)
+        if "prespeech" in segment:
+            st.write(segment["prespeech"])
 
     with colb:
-        st.write("**Respose**")
+        st.write("**Response**")
         response = st.text_input(
             "blah", value="", label_visibility="collapsed", key=get_current()
         )
+
+    st.video(fpath, "video/mp4")
 
     return response
 
