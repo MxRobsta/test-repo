@@ -10,12 +10,29 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from functools import partial
 
-from utils import load_refaudio
+from utils import load_refaudio, rms_norm
 
 PLOT_FS = 500
 
+AUDIO_FS = 16000
 
-def animate(snippet, target_start, fpath):
+
+def framewise_rms(snippet):
+    hop = int(AUDIO_FS / PLOT_FS)
+    window = 10 * hop
+    ham = np.hamming(window)
+    audio_len = snippet.shape[0]
+
+    rms = []
+
+    for i in range(0, audio_len - window, hop):
+        frame = snippet[i : i + window] * ham
+        rms.append(np.log(np.sqrt(np.mean(np.square(frame))) + 1e-5))
+    rms = np.convolve(rms, np.hamming(100), mode="same")
+    return rms
+
+
+def animate_waveform(snippet, target_start, fpath):
 
     fig, ax = plt.subplots(figsize=[6, 2])
     ax.axis("off")
@@ -58,6 +75,7 @@ def animate(snippet, target_start, fpath):
     if not Path(fpath).parent.exists():
         Path(fpath).parent.mkdir(parents=True)
 
+    # plt.show()
     ani.save(fpath, writer="ffmpeg", fps=1 / dt)
     plt.close(fig)
 
@@ -77,26 +95,63 @@ def main(cfg: DictConfig):
         session = sess_info["session"]
         device = sess_info["device"]
         pid = sess_info["pid"]
-        audio, fs = load_refaudio(
+        sum_waveform, fs = load_refaudio(
             audio_fpath,
             session,
             device,
             [f"pos{i}" for i in range(1, 5)],
             target_sr=PLOT_FS,
-            normalize=0.05,
+        )
+        target_waveform, _ = load_refaudio(
+            audio_fpath, session, device, pid, target_sr=PLOT_FS
+        )
+
+        target_power, _ = load_refaudio(
+            audio_fpath, session, device, pid, target_sr=AUDIO_FS
         )
 
         for seg in tqdm(sess_info["segments"], desc=f"{session} {pid}"):
             start = int(seg["context"]["start_time"] * PLOT_FS)
             end = int(seg["context"]["end_time"] * PLOT_FS)
-
-            snippet = audio[start:end]
             target_start = seg["speech"]["start_time"] - seg["context"]["start_time"]
+
+            snippet = rms_norm(sum_waveform[start:end], 0.05)
             fpath = animation_ftemplate.format(
-                session=session, device=device, pid=pid, seg=seg["index"]
+                session=session,
+                device=device,
+                pid=pid,
+                seg=seg["index"],
+                anim="sumwave",
+            )
+            if not Path(fpath).exists():
+                animate_waveform(snippet, target_start, fpath)
+
+            snippet = rms_norm(target_waveform[start:end], 0.05)
+
+            fpath = animation_ftemplate.format(
+                session=session,
+                device=device,
+                pid=pid,
+                seg=seg["index"],
+                anim="targetwave",
+            )
+            if not Path(fpath).exists():
+                animate_waveform(snippet, target_start, fpath)
+
+            start = int(seg["context"]["start_time"] * AUDIO_FS)
+            end = int(seg["context"]["end_time"] * AUDIO_FS)
+            snippet = target_power[start:end]
+            thing = framewise_rms(snippet)
+
+            fpath = animation_ftemplate.format(
+                session=session,
+                device=device,
+                pid=pid,
+                seg=seg["index"],
+                anim="targetpower",
             )
 
-            animate(snippet, target_start, fpath)
+            animate_waveform(thing, target_start, fpath)
 
 
 if __name__ == "__main__":
