@@ -47,16 +47,7 @@ def main(cfg: DictConfig):
                 session_audio = np.sum(session_audio[:, :2], axis=1)
 
         for segment in sess_info["segments"]:
-            anim_fpath = Path(
-                animation_ftemplate.format(
-                    dataset="dev",
-                    exp=experiment,
-                    session=session,
-                    device=device,
-                    pid=pid,
-                    seg=segment["index"],
-                )
-            )
+
             seg_audio_fpath = Path(
                 output_audio_ftemplate.format(
                     dataset="dev",
@@ -67,18 +58,8 @@ def main(cfg: DictConfig):
                     seg=segment["index"],
                 )
             )
-            seg_video_fpath = Path(
-                output_video_ftemplate.format(
-                    dataset="dev",
-                    exp=experiment,
-                    session=session,
-                    device=device,
-                    pid=pid,
-                    seg=segment["index"],
-                )
-            )
 
-            if seg_audio_fpath.exists() and seg_video_fpath.exists():
+            if seg_audio_fpath.exists():
                 continue
 
             start = int(segment["context"]["start_time"] * TARGET_SR)
@@ -91,9 +72,32 @@ def main(cfg: DictConfig):
 
             sf.write(seg_audio_fpath, snippet, TARGET_SR)
 
-            os.system(
-                f"ffmpeg -hide_banner -loglevel error -i {anim_fpath} -i {seg_audio_fpath} -c:v copy -c:a aac {seg_video_fpath}"
-            )
+            for anim in cfg.animation_types:
+                seg_video_fpath = Path(
+                    output_video_ftemplate.format(
+                        dataset="dev",
+                        exp=experiment,
+                        session=session,
+                        device=device,
+                        pid=pid,
+                        seg=segment["index"],
+                        anim=anim,
+                    )
+                )
+                anim_fpath = Path(
+                    animation_ftemplate.format(
+                        dataset="dev",
+                        exp=experiment,
+                        session=session,
+                        device=device,
+                        pid=pid,
+                        seg=segment["index"],
+                        anim=anim,
+                    )
+                )
+                os.system(
+                    f"ffmpeg -hide_banner -loglevel error -i {anim_fpath} -i {seg_audio_fpath} -c:v copy -c:a aac {seg_video_fpath}"
+                )
 
 
 if __name__ == "__main__":

@@ -29,3 +29,8 @@ experiment: baseline
 exp_session_file: ${paths.exp_session_file}
 exp_segment_video: ${paths.exp_segment_video}
 exp_segment_audio: ${paths.exp_segment_audio}
+
+animation_types:
+  - targetwave
+  - sumwave
+  - targetpower
