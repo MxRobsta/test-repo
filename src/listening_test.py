@@ -1,12 +1,23 @@
-import hydra
 import json
-from omegaconf import DictConfig
+from hydra import initialize, compose
+from hydra.core.global_hydra import GlobalHydra
+import os
 import streamlit as st
 
 if "current" not in st.session_state:
-    st.session_state.current = "settings"
+    st.session_state.current = {"state": "instructions"}
 
 SEGMENTS = []
+N_TRAINS = 3
+
+
+@st.cache_resource
+def load_config():
+    if GlobalHydra.instance().is_initialized():
+        GlobalHydra.instance().clear()
+    with initialize(config_path="../config", version_base=None):
+        cfg = compose(config_name="main")
+    return cfg
 
 
 @st.cache_data
@@ -21,13 +32,49 @@ def get_current():
     return st.session_state.current
 
 
-def decode_current():
+def append_save(response):
+    player_name = st.session_state.responses["name"]
+
     current = get_current()
-    return current // 1000, current % 1000
+    seg = SEGMENTS[current["speaker"]]["segments"][current["sample"]]
+    st.session_state.responses["segments"].append(
+        {
+            "key": seg["key"],
+            "ground_truth": seg["ground_truth"],
+            "response": response,
+            "isTrain": current["isTrain"],
+        }
+    )
+
+    with open(f"transcripts/{player_name}.json", "w") as file:
+        json.dump(st.session_state.responses, file, indent=4)
 
 
-def encode_current(speaker, index):
-    return speaker * 1000 + index
+def check_continue():
+    player_name = st.session_state.responses["name"]
+
+    fpath = f"transcripts/{player_name}.json"
+
+    if not os.path.exists(fpath):
+        return {"state": "rainbow", "speaker": 0}
+
+    with open(fpath, "r") as file:
+        responses = json.load(file)
+        keys = [x["key"] for x in json.load(file)["segments"]]
+
+    for spk, info in enumerate(SEGMENTS):
+        for sample, seg in enumerate(info["segments"]):
+            if seg["key"] not in keys:
+                isTrain = sample < N_TRAINS
+                st.session_state.responses = responses
+                return {
+                    "state": "training" if isTrain else "testing",
+                    "speaker": spk,
+                    "sample": sample,
+                    "isTrain": False,
+                }
+    print("All segments already seen")
+    return {"state": "end"}
 
 
 def instructions():
@@ -58,6 +105,9 @@ def instructions():
         """
     )
 
+    name = st.text_input("Please enter your name here")
+    st.session_state.responses = {"name": name, "segments": []}
+
 
 def settings(segment_ftemplate, anim_types, transcript_types):
 
@@ -68,11 +118,12 @@ def settings(segment_ftemplate, anim_types, transcript_types):
     st.write("Please also use this page to tune your volume to a comfortable level.")
 
     cola, colb = st.columns(2)
-
     with cola:
-        st.selectbox("anim_type", tuple(anim_types), key="anim_type")
+        anim = st.selectbox("anim_type", tuple(anim_types), index=2)
+        st.session_state.anim_type = anim
     with colb:
-        st.selectbox("transcript type", tuple(transcript_types), key="transcript_type")
+        tra = st.selectbox("transcript type", tuple(transcript_types), index=2)
+        st.session_state.transcript_type = tra
 
     st.subheader("Example Sample")
 
@@ -80,7 +131,7 @@ def settings(segment_ftemplate, anim_types, transcript_types):
 
 
 def show_rainbow(rainbow_ftemplate):
-    speaker = int(get_current().split()[1])
+    speaker = get_current()["speaker"]
 
     pid = SEGMENTS[speaker]["pid"]
     st.header("Clean speech sample for " + pid)
@@ -91,8 +142,9 @@ def show_sample(segment_ftemplate, dummy=False):
     if dummy:
         speaker, index = 0, 0
     else:
-        speaker, index = decode_current()
-
+        current = get_current()
+        speaker = current["speaker"]
+        index = current["sample"]
     info = SEGMENTS[speaker]
     segment = info["segments"][index]
 
@@ -102,7 +154,7 @@ def show_sample(segment_ftemplate, dummy=False):
 
     fpath = segment_ftemplate.format(
         dataset="dev",
-        exp="passthrough",
+        exp="baseline",
         session=session,
         device=device,
         pid=pid,
@@ -110,20 +162,34 @@ def show_sample(segment_ftemplate, dummy=False):
         anim=st.session_state.anim_type,
     )
 
-    cola, colb = st.columns(2)
-
-    with cola:
-        st.write("**Prior Transcript**")
-        if st.session_state.transcript_type in ["target only", "all"]:
-            st.write(f"Target: {segment['target_prior']}\n\n")
-        if st.session_state.transcript_type == "all":
-            st.write(segment["other_prior"])
-
-    with colb:
-        st.write("**Response**")
-        response = st.text_input(
-            "blah", value="", label_visibility="collapsed", key=get_current()
+    current = get_current()
+    if not dummy and current["isTrain"]:
+        st.header(f"Training Sample {current['sample'] + 1}/{N_TRAINS}")
+    elif not dummy:
+        st.header(
+            f"Speaker Sample {current['sample'] + 1 - N_TRAINS}/{len(info['segments']) - N_TRAINS}"
         )
+
+    if st.session_state.transcript_type != "none":
+        st.subheader("Prior Transcript")
+        lines = ["Target: " + segment["target_prior"]]
+
+        if st.session_state.transcript_type == "all":
+            lines += segment["other_prior"].split("\n\n")
+
+        cola, colb = st.columns([1, 5])
+        for line in lines:
+            pre_spk, text = line.split(":")
+            cola.write(pre_spk)
+            colb.write(text)
+
+    cola, colb = st.columns([1, 5])
+    with cola:
+        st.write("**Response**")
+
+    response = colb.text_input(
+        "blah", "", label_visibility="collapsed", key=speaker * 1000 + index
+    )
 
     st.video(fpath, "video/mp4")
 
@@ -131,57 +197,81 @@ def show_sample(segment_ftemplate, dummy=False):
 
 
 def continue_test(response):
-    state = get_current()
+    current = get_current()
+    state = current["state"]
 
-    if isinstance(state, str):
-        if state == "instructions":
-            st.session_state.current = "settings"
-        elif state == "settings":
-            st.session_state.current = "spk 0"
-        elif state[:3] == "spk":
-            speaker = int(state.split()[1])
-            st.session_state.current = encode_current(speaker, 0)
+    if state == "instructions":
+        st.session_state.current["state"] = "settings"
+    elif state == "settings":
+        st.session_state.current = check_continue()
+    elif state == "rainbow":
+        st.session_state.current = {
+            "state": "training",
+            "speaker": current["speaker"],
+            "sample": 0,
+            "isTrain": True,
+        }
+    elif state == "training":
+        append_save(response)
+        if current["sample"] == N_TRAINS - 1:
+            st.session_state.current = {
+                "state": "testing",
+                "speaker": current["speaker"],
+                "sample": N_TRAINS,
+                "isTrain": False,
+            }
         else:
-            raise ValueError(f"Invalid state: {state}")
-    elif isinstance(state, int):
-        speaker, index = decode_current()
+            current["sample"] += 1
+            st.session_state.current = current
+    elif state == "testing":
+        append_save(response)
+        speaker = current["speaker"]
+        sample = current["sample"]
+        total_samples = len(SEGMENTS[speaker]["segments"])
+        total_speakers = len(SEGMENTS)
 
-        current_segments = SEGMENTS[speaker]["segments"]
-        if index == len(current_segments) - 1 and speaker == len(SEGMENTS) - 1:
-            # Completed last speaker, finish study
-            st.session_state.current = "end"
-        elif index == len(current_segments) - 1:
-            # Finished test for speaker, move on to the next one
-            st.session_state.current = f"spk {speaker + 1}"
+        if speaker == total_speakers - 1:
+            # Finished all speakers, ending test
+            st.session_state.current = {"state": "end"}
+        elif sample == total_samples - 1:
+            # Finished speaker, move on to next
+            st.session_state.current = {
+                "state": "rainbow",
+                "speaker": speaker + 1,
+            }
         else:
-            # Move on to the next samples for the current speaker
-            st.session_state.current = encode_current(speaker, index + 1)
-    else:
-        raise ValueError(f"Invalid state: {state}")
+            current["sample"] += 1
+            st.session_state.current = current
 
 
-@hydra.main(version_base=None, config_path="../config", config_name="main")
-def main(cfg: DictConfig):
+def main():
     global SEGMENTS
+
+    cfg = load_config()
 
     SEGMENTS = load_segment_json(cfg.filtered_store)
 
-    current = get_current()
+    if "anim_type" not in st.session_state:
+        st.session_state.anim_type = cfg.animation_types[2]
+    if "transcript_type" not in st.session_state:
+        st.session_state.transcript_type = cfg.transcript_types[2]
 
-    if current == "instructions":
+    state = get_current()["state"]
+
+    if state == "instructions":
         response = instructions()
-    elif current == "settings":
+    elif state == "settings":
         response = settings(
             cfg.exp_segment_video, cfg.animation_types, cfg.transcript_types
         )
-    elif isinstance(current, str) and current[:3] == "spk":
+    elif state == "rainbow":
         response = show_rainbow(cfg.rainbow_file)
-    elif isinstance(current, int):
+    elif state == "training" or state == "testing":
         response = show_sample(cfg.exp_segment_video)
-    elif current == "end":
+    elif state == "end":
         response = st.title("Thank you")
     else:
-        raise ValueError(f"Invalid state: {current}")
+        raise ValueError(f"Invalid state: {get_current()}")
 
     st.button("Continue", on_click=continue_test, args=[response])
 

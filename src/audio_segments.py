@@ -62,7 +62,7 @@ def main(cfg: DictConfig):
             start = int(segment["start_time"] * TARGET_SR)
             end = int(segment["end_time"] * TARGET_SR)
 
-            snippet = rms_norm(session_audio[start:end], 0.1)
+            snippet = rms_norm(session_audio[start:end], 0.05)
 
             if not seg_audio_fpath.parent.exists():
                 seg_audio_fpath.parent.mkdir(parents=True)
