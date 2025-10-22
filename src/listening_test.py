@@ -4,7 +4,7 @@ from omegaconf import DictConfig
 import streamlit as st
 
 if "current" not in st.session_state:
-    st.session_state.current = "instructions"
+    st.session_state.current = "settings"
 
 SEGMENTS = []
 
@@ -59,6 +59,26 @@ def instructions():
     )
 
 
+def settings(segment_ftemplate, anim_types, transcript_types):
+
+    st.header("Settings")
+    st.write(
+        "Here you can toggle some settings for the listening tests. A preview is shown below, and will update when you toggle the settings."
+    )
+    st.write("Please also use this page to tune your volume to a comfortable level.")
+
+    cola, colb = st.columns(2)
+
+    with cola:
+        st.selectbox("anim_type", tuple(anim_types), key="anim_type")
+    with colb:
+        st.selectbox("transcript type", tuple(transcript_types), key="transcript_type")
+
+    st.subheader("Example Sample")
+
+    show_sample(segment_ftemplate, True)
+
+
 def show_rainbow(rainbow_ftemplate):
     speaker = int(get_current().split()[1])
 
@@ -67,8 +87,11 @@ def show_rainbow(rainbow_ftemplate):
     st.audio(rainbow_ftemplate.format(dataset="dev", pid=pid))
 
 
-def show_sample(segment_ftemplate):
-    speaker, index = decode_current()
+def show_sample(segment_ftemplate, dummy=False):
+    if dummy:
+        speaker, index = 0, 0
+    else:
+        speaker, index = decode_current()
 
     info = SEGMENTS[speaker]
     segment = info["segments"][index]
@@ -79,20 +102,22 @@ def show_sample(segment_ftemplate):
 
     fpath = segment_ftemplate.format(
         dataset="dev",
-        exp="baseline",
+        exp="passthrough",
         session=session,
         device=device,
         pid=pid,
         seg=segment["index"],
+        anim=st.session_state.anim_type,
     )
 
     cola, colb = st.columns(2)
 
     with cola:
         st.write("**Prior Transcript**")
-        print(segment)
-        if "prespeech" in segment:
-            st.write(segment["prespeech"])
+        if st.session_state.transcript_type in ["target only", "all"]:
+            st.write(f"Target: {segment['target_prior']}\n\n")
+        if st.session_state.transcript_type == "all":
+            st.write(segment["other_prior"])
 
     with colb:
         st.write("**Response**")
@@ -107,10 +132,11 @@ def show_sample(segment_ftemplate):
 
 def continue_test(response):
     state = get_current()
-    print("response", response)
 
     if isinstance(state, str):
         if state == "instructions":
+            st.session_state.current = "settings"
+        elif state == "settings":
             st.session_state.current = "spk 0"
         elif state[:3] == "spk":
             speaker = int(state.split()[1])
@@ -144,6 +170,10 @@ def main(cfg: DictConfig):
 
     if current == "instructions":
         response = instructions()
+    elif current == "settings":
+        response = settings(
+            cfg.exp_segment_video, cfg.animation_types, cfg.transcript_types
+        )
     elif isinstance(current, str) and current[:3] == "spk":
         response = show_rainbow(cfg.rainbow_file)
     elif isinstance(current, int):

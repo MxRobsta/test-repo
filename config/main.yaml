@@ -30,7 +30,14 @@ exp_session_file: ${paths.exp_session_file}
 exp_segment_video: ${paths.exp_segment_video}
 exp_segment_audio: ${paths.exp_segment_audio}
 
+overwrite: False
+
 animation_types:
   - targetwave
   - sumwave
   - targetpower
+
+transcript_types:
+  - none
+  - target only
+  - all

@@ -8,6 +8,7 @@ from tqdm import tqdm
 
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+from matplotlib import patches
 from functools import partial
 
 from utils import load_refaudio, rms_norm
@@ -35,21 +36,39 @@ def framewise_rms(snippet):
 def animate_waveform(snippet, target_start, fpath):
 
     fig, ax = plt.subplots(figsize=[6, 2])
-    ax.axis("off")
     (line1,) = ax.plot([], [], "tab:blue")
-
-    snippet /= np.max(np.absolute(snippet))
 
     dt = 0.01
     signal_seconds = snippet.shape[0] / PLOT_FS
     t = np.linspace(0, signal_seconds, len(snippet))
 
-    ax.plot(t, snippet, "tab:blue", alpha=0.2)
-    ax.axvline(target_start, color="r")
+    # print(min(snippet), max(snippet))
 
     def init():
+        ymin, ymax = min(snippet), max(snippet)
+        ymax = ymax + (ymax - ymin) * 0.2
+        text_top = ymax * 0.95 + ymin * 0.05
+
+        ax.set_ylim(ymin, ymax)
         ax.set_xlim(0, signal_seconds)
-        ax.set_ylim(-1, 1)
+        ax.axis("off")
+
+        rect = patches.Rectangle(
+            (target_start, ymin),
+            signal_seconds - target_start,
+            ymax - ymin,
+            color="gray",
+            alpha=0.15,
+        )
+        ax.add_patch(rect)
+        ax.axvline(target_start, color="r")
+
+        ax.plot(t, snippet, "tab:blue", alpha=0.2)
+
+        mid = (target_start + signal_seconds) / 2
+
+        ax.text(mid, text_top, "Transcribe here", ha="center", va="top")
+
         return (line1,)
 
     def update(frame, ln, x, y):
@@ -111,9 +130,9 @@ def main(cfg: DictConfig):
         )
 
         for seg in tqdm(sess_info["segments"], desc=f"{session} {pid}"):
-            start = int(seg["context"]["start_time"] * PLOT_FS)
-            end = int(seg["context"]["end_time"] * PLOT_FS)
-            target_start = seg["speech"]["start_time"] - seg["context"]["start_time"]
+            start = int(seg["start_time"] * PLOT_FS)
+            end = int(seg["end_time"] * PLOT_FS)
+            target_start = seg["speech"]["start_time"] - seg["start_time"]
 
             snippet = rms_norm(sum_waveform[start:end], 0.05)
             fpath = animation_ftemplate.format(
@@ -123,7 +142,7 @@ def main(cfg: DictConfig):
                 seg=seg["index"],
                 anim="sumwave",
             )
-            if not Path(fpath).exists():
+            if not Path(fpath).exists() or cfg.overwrite:
                 animate_waveform(snippet, target_start, fpath)
 
             snippet = rms_norm(target_waveform[start:end], 0.05)
@@ -135,11 +154,11 @@ def main(cfg: DictConfig):
                 seg=seg["index"],
                 anim="targetwave",
             )
-            if not Path(fpath).exists():
+            if not Path(fpath).exists() or cfg.overwrite:
                 animate_waveform(snippet, target_start, fpath)
 
-            start = int(seg["context"]["start_time"] * AUDIO_FS)
-            end = int(seg["context"]["end_time"] * AUDIO_FS)
+            start = int(seg["start_time"] * AUDIO_FS)
+            end = int(seg["end_time"] * AUDIO_FS)
             snippet = target_power[start:end]
             thing = framewise_rms(snippet)
 
@@ -151,7 +170,8 @@ def main(cfg: DictConfig):
                 anim="targetpower",
             )
 
-            animate_waveform(thing, target_start, fpath)
+            if not Path(fpath).exists() or cfg.overwrite:
+                animate_waveform(thing, target_start, fpath)
 
 
 if __name__ == "__main__":

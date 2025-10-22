@@ -59,13 +59,10 @@ def main(cfg: DictConfig):
                 )
             )
 
-            if seg_audio_fpath.exists():
-                continue
+            start = int(segment["start_time"] * TARGET_SR)
+            end = int(segment["end_time"] * TARGET_SR)
 
-            start = int(segment["context"]["start_time"] * TARGET_SR)
-            end = int(segment["context"]["end_time"] * TARGET_SR)
-
-            snippet = rms_norm(session_audio[start:end], 0.05)
+            snippet = rms_norm(session_audio[start:end], 0.1)
 
             if not seg_audio_fpath.parent.exists():
                 seg_audio_fpath.parent.mkdir(parents=True)
@@ -95,9 +92,10 @@ def main(cfg: DictConfig):
                         anim=anim,
                     )
                 )
-                os.system(
-                    f"ffmpeg -hide_banner -loglevel error -i {anim_fpath} -i {seg_audio_fpath} -c:v copy -c:a aac {seg_video_fpath}"
-                )
+                if not anim_fpath.exists() or cfg.overwrite:
+                    os.system(
+                        f"ffmpeg -y -hide_banner -loglevel error -i {anim_fpath} -i {seg_audio_fpath} -c:v copy -c:a aac {seg_video_fpath}"
+                    )
 
 
 if __name__ == "__main__":
