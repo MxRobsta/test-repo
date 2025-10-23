@@ -9,7 +9,6 @@ from omegaconf import DictConfig
 @hydra.main(version_base=None, config_path="../config", config_name="main")
 def main(cfg: DictConfig):
     plot_wer(cfg)
-    plt.show()
 
 
 def plot_wer(cfg: DictConfig, streamlit=False):

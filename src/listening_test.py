@@ -1,6 +1,7 @@
 import json
 from hydra import initialize, compose
 from hydra.core.global_hydra import GlobalHydra
+import matplotlib.pyplot as plt
 import os
 import streamlit as st
 
@@ -64,12 +65,11 @@ def check_continue():
     with open(fpath, "r") as file:
         responses = json.load(file)
     keys = [x["key"] for x in responses["segments"]]
-
+    st.session_state.responses = responses
     for spk, info in enumerate(SEGMENTS):
         for sample, seg in enumerate(info["segments"]):
             if seg["key"] not in keys:
                 isTrain = sample < N_TRAINS
-                st.session_state.responses = responses
                 return {
                     "state": "training" if isTrain else "testing",
                     "speaker": spk,
@@ -282,6 +282,10 @@ def end_window(cfg):
     cfg.listener = st.session_state.responses["name"]
     fig = plot_wer(cfg, True)
     st.pyplot(fig)
+    st.write(
+        "Please download your data using the button below and send it to rwhsutherland1@sheffield.ac.uk"
+    )
+    plt.savefig(f"transcripts/{cfg.listener}.png")
 
 
 def main():
@@ -317,7 +321,14 @@ def main():
     else:
         raise ValueError(f"Invalid state: {get_current()}")
 
-    st.button("Continue", on_click=continue_test, args=[response])
+    if state == "end":
+        name = st.session_state.responses["name"]
+        data = json.dumps(st.session_state.responses)
+        st.download_button(
+            label="Download Your Data", data=data, file_name=f"{name}.json"
+        )
+    else:
+        st.button("Continue", on_click=continue_test, args=[response])
 
 
 if __name__ == "__main__":

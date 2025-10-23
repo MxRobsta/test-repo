@@ -1,0 +1,341 @@
+{
+    "name": "Jack",
+    "segments": [
+        {
+            "key": "dev_03.aria.P095.24",
+            "ground_truth": "Nah you don't, you have to hold it ",
+            "response": "Do you have to hold it?",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_03.aria.P095.40",
+            "ground_truth": "That goes down very quickly though",
+            "response": "But that goes down very quickly.",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_03.aria.P095.41",
+            "ground_truth": "I used to take cold showers every morning",
+            "response": "",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_03.aria.P095.44",
+            "ground_truth": "I already noticed a difference after like a week.",
+            "response": "a week",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.60",
+            "ground_truth": "I don't really support seasonal change",
+            "response": "I don't really support seasonal change",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.68",
+            "ground_truth": "Is it quite humid there",
+            "response": "Yeah, the hotels maybe",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.90",
+            "ground_truth": "Yeah France recently has got much more into it",
+            "response": "Yeah, France...much more...",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.96",
+            "ground_truth": "I've seen Manchester Monopoly, I've never seen just Sheffield",
+            "response": "",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.109",
+            "ground_truth": "Exciting's a strong word for what that was",
+            "response": "No, it's an engineering thing",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.113",
+            "ground_truth": "Yeah like kinda on the outskirts of town",
+            "response": "Yeah, like kinda like on the outskirts of town",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.115",
+            "ground_truth": "Like it was a bit, like, overhyped",
+            "response": "It disappeared like it's overhyped",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.132",
+            "ground_truth": "Oh, do you skate? Oh that's cool",
+            "response": "",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.26",
+            "ground_truth": "Scream? of yeah that's popular, the Scream mask",
+            "response": "Scream oh yeah that's popular",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_11.ha.P183.29",
+            "ground_truth": "Really I can't remember off the top of my head.",
+            "response": "Literally I can't remember",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_11.ha.P183.32",
+            "ground_truth": "So what kinda costume theme for the next costume party?",
+            "response": "So what about the costume theme for the next costume party",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_11.ha.P183.53",
+            "ground_truth": "Your parents probably raised you properly then?",
+            "response": "Your parents probably raised you properly",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.121",
+            "ground_truth": "Well when I hear traditional art, I just think like, drawing",
+            "response": "traditional art I just think like",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.124",
+            "ground_truth": "They can be, like I wouldn't say so",
+            "response": "I wouldn't say so",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.150",
+            "ground_truth": "Yeah, I mean, I've seen a watch, I've seen a ring",
+            "response": "I've seen I've seen",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.158",
+            "ground_truth": "I could imagine, like, fitness tracker shoes.",
+            "response": "I could imagine like the shopping shoes",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.189",
+            "ground_truth": "Did you guys hear of that one thing that just came on Netflix?",
+            "response": "on netflix",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.206",
+            "ground_truth": "Very surprising, did you see the new one he's working on?",
+            "response": "Did you see the new one he's got",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.212",
+            "ground_truth": "I think Brothers is a really good film",
+            "response": "I think is very good",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.234",
+            "ground_truth": "Anyway, which film would you add to the movie marathon",
+            "response": "Anyway",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.22",
+            "ground_truth": "Yeah it's like even TikTok, YouTube",
+            "response": "And it's like even TikTok",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_12.aria.P190.36",
+            "ground_truth": "Just use the lid, that's what I do",
+            "response": "Just use a lid that's what I do",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_12.aria.P190.50",
+            "ground_truth": "No ours stays on luckily",
+            "response": "No I'll",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_12.aria.P190.86",
+            "ground_truth": "The idea of just, just steak",
+            "response": "The idea of just just like",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.107",
+            "ground_truth": "To be fair, that wouldn't be that bad",
+            "response": "To be fair, that wouldn't be that bad",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.134",
+            "ground_truth": "Us forcing you to watch all three of them",
+            "response": "I don't want to watch it",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.142",
+            "ground_truth": "She's in it, I don't think anyone else",
+            "response": "She's in it I don't think anyone else",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.157",
+            "ground_truth": "Same, I haven't finished that",
+            "response": "I haven't finished that",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.177",
+            "ground_truth": "Do you actually get coursework done?",
+            "response": "Did you actually get coursework done?",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.207",
+            "ground_truth": "See we got to pick a language",
+            "response": "So we got to pick a language",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.224",
+            "ground_truth": "Yeah, you've got to have something",
+            "response": "You've got to have something",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.240",
+            "ground_truth": "Yeah having older siblings who were like great at everything sucks",
+            "response": "older siblings who were like great at everything",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.15",
+            "ground_truth": "No but London is nowhere near the sea is it",
+            "response": "London is nowhere near the sea, is it?",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_04.ha.P115.19",
+            "ground_truth": "It's very clean, Sheffield. It's really clean",
+            "response": "It's very clean, Sheffield",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_04.ha.P115.21",
+            "ground_truth": "I mean, it's a much bigger city",
+            "response": "I mean, it's a much bigger city",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_04.ha.P115.62",
+            "ground_truth": "I have no free time. Genuinely, I have no free time.",
+            "response": "I have no free time, genuinely I have no free time",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.67",
+            "ground_truth": "Speaking of which, I want to go tomorrow.",
+            "response": "Speaking of it, I want to go tomorrow",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.101",
+            "ground_truth": "Also I do want nice creamy pasta",
+            "response": "Also I do want ice cream",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.108",
+            "ground_truth": "I need to go home straight away",
+            "response": "straight away",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.122",
+            "ground_truth": "We can't drive to Mallorca",
+            "response": "We can't drive to Mallorca",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.163",
+            "ground_truth": "You know your holiday to Barcelona?",
+            "response": "You know you're",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.88",
+            "ground_truth": "You've had a very bad experience",
+            "response": "A very bad experience",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.178",
+            "ground_truth": "Okay we could do badminton?",
+            "response": "How can you be bad at badminton?",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.218",
+            "ground_truth": "I program and make websites",
+            "response": "",
+            "commment": "",
+            "isTrain": false
+        }
+    ]
+}
