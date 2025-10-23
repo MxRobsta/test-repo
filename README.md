@@ -24,7 +24,10 @@ Or with `conda`:
 ```[bash]
 # For a new environment
 conda env create -f requirements.yaml
+conda activate echi-listeningtests
+
 # To update an existing environment
+conda activate echi-listeningtests
 conda env update -f requirements.yaml
 ```
 
