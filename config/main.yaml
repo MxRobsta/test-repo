@@ -22,6 +22,7 @@ ref_session_file: ${paths.ref_session_file}
 segments_file: ${paths.segments_file}
 
 animations_file: ${paths.animations_file}
+test_rainbow_file: ${paths.test_rainbow_file}
 
 listener: ???
 

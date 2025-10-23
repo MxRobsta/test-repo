@@ -24,3 +24,4 @@ exp_segment_video: ${paths.minitest_dir}/{exp}/{session}.{device}.{pid}.{seg}.{a
 exp_segment_audio: ${paths.minitest_dir}/{exp}/{session}.{device}.{pid}.{seg}.wav
 
 animations_file: ${paths.minitest_dir}/animations/{session}.{device}.{pid}.{seg}.{anim}.mp4
+test_rainbow_file: ${paths.minitest_dir}/rainbow/{pid}.wav

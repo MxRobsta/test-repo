@@ -130,7 +130,7 @@ def settings(segment_ftemplate, anim_types, transcript_types):
 
     cola, colb = st.columns(2)
     with cola:
-        anim = st.selectbox("anim_type", tuple(anim_types), index=2)
+        anim = st.selectbox("anim_type", tuple(anim_types), index=0)
         st.session_state.anim_type = anim
     with colb:
         tra = st.selectbox("transcript type", tuple(transcript_types), index=2)
@@ -296,7 +296,7 @@ def main():
     SEGMENTS = load_segment_json(cfg.filtered_store)
 
     if "anim_type" not in st.session_state:
-        st.session_state.anim_type = cfg.animation_types[2]
+        st.session_state.anim_type = cfg.animation_types[1]
     if "transcript_type" not in st.session_state:
         st.session_state.transcript_type = cfg.transcript_types[2]
 
@@ -309,7 +309,7 @@ def main():
             cfg.exp_segment_video, cfg.animation_types, cfg.transcript_types
         )
     elif state == "rainbow":
-        response = show_rainbow(cfg.rainbow_file)
+        response = show_rainbow(cfg.test_rainbow_file)
     elif state == "pretrain":
         response = pretrain()
     elif state == "pretest":
