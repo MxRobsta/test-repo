@@ -4,6 +4,8 @@ from hydra.core.global_hydra import GlobalHydra
 import os
 import streamlit as st
 
+from wer import plot_wer
+
 if "current" not in st.session_state:
     st.session_state.current = {"state": "instructions"}
 
@@ -41,7 +43,8 @@ def append_save(response):
         {
             "key": seg["key"],
             "ground_truth": seg["ground_truth"],
-            "response": response,
+            "response": response[0],
+            "commment": response[1],
             "isTrain": current["isTrain"],
         }
     )
@@ -60,7 +63,7 @@ def check_continue():
 
     with open(fpath, "r") as file:
         responses = json.load(file)
-        keys = [x["key"] for x in json.load(file)["segments"]]
+    keys = [x["key"] for x in responses["segments"]]
 
     for spk, info in enumerate(SEGMENTS):
         for sample, seg in enumerate(info["segments"]):
@@ -130,6 +133,22 @@ def settings(segment_ftemplate, anim_types, transcript_types):
     show_sample(segment_ftemplate, True)
 
 
+def pretrain():
+    current = st.session_state.current
+    speaker = current["speaker"]
+    pid = SEGMENTS[speaker]["pid"]
+
+    st.header(f"TRAINING for {pid}")
+
+
+def pretest():
+    current = st.session_state.current
+    speaker = current["speaker"]
+    pid = SEGMENTS[speaker]["pid"]
+
+    st.header(f"TESTING for {pid}")
+
+
 def show_rainbow(rainbow_ftemplate):
     speaker = get_current()["speaker"]
 
@@ -181,6 +200,8 @@ def show_sample(segment_ftemplate, dummy=False):
         for line in lines:
             pre_spk, text = line.split(":")
             cola.write(pre_spk)
+            if len(text) == 1:
+                text = "."
             colb.write(text)
 
     cola, colb = st.columns([1, 5])
@@ -193,7 +214,8 @@ def show_sample(segment_ftemplate, dummy=False):
 
     st.video(fpath, "video/mp4")
 
-    return response
+    comment = st.text_input("Comments here")
+    return response, comment
 
 
 def continue_test(response):
@@ -205,6 +227,8 @@ def continue_test(response):
     elif state == "settings":
         st.session_state.current = check_continue()
     elif state == "rainbow":
+        st.session_state.current = {"state": "pretrain", "speaker": current["speaker"]}
+    elif state == "pretrain":
         st.session_state.current = {
             "state": "training",
             "speaker": current["speaker"],
@@ -215,7 +239,7 @@ def continue_test(response):
         append_save(response)
         if current["sample"] == N_TRAINS - 1:
             st.session_state.current = {
-                "state": "testing",
+                "state": "pretest",
                 "speaker": current["speaker"],
                 "sample": N_TRAINS,
                 "isTrain": False,
@@ -223,25 +247,33 @@ def continue_test(response):
         else:
             current["sample"] += 1
             st.session_state.current = current
+    elif state == "pretest":
+        current["state"] = "testing"
+        st.session_state.current = current
     elif state == "testing":
         append_save(response)
         speaker = current["speaker"]
         sample = current["sample"]
         total_samples = len(SEGMENTS[speaker]["segments"])
         total_speakers = len(SEGMENTS)
-
-        if speaker == total_speakers - 1:
-            # Finished all speakers, ending test
-            st.session_state.current = {"state": "end"}
-        elif sample == total_samples - 1:
+        if sample < total_samples - 1:
+            current["sample"] += 1
+            st.session_state.current = current
+        elif speaker < total_speakers - 1:
             # Finished speaker, move on to next
             st.session_state.current = {
                 "state": "rainbow",
                 "speaker": speaker + 1,
             }
         else:
-            current["sample"] += 1
-            st.session_state.current = current
+            # Finished all speakers, ending test
+            st.session_state.current = {"state": "end"}
+
+
+def end_window(cfg):
+    cfg.listener = st.session_state.responses["name"]
+    fig = plot_wer(cfg, True)
+    st.pyplot(fig)
 
 
 def main():
@@ -266,10 +298,14 @@ def main():
         )
     elif state == "rainbow":
         response = show_rainbow(cfg.rainbow_file)
+    elif state == "pretrain":
+        response = pretrain()
+    elif state == "pretest":
+        response = pretest()
     elif state == "training" or state == "testing":
         response = show_sample(cfg.exp_segment_video)
     elif state == "end":
-        response = st.title("Thank you")
+        response = end_window(cfg)
     else:
         raise ValueError(f"Invalid state: {get_current()}")
 

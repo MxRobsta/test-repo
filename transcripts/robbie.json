@@ -240,6 +240,54 @@
             "ground_truth": "I have no free time. Genuinely, I have no free time.",
             "response": "i have no free time, genuinely i have no free time",
             "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.67",
+            "ground_truth": "Speaking of which, I want to go tomorrow.",
+            "response": "speaking of which i want to go tomorrow",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.101",
+            "ground_truth": "Also I do want nice creamy pasta",
+            "response": "also i do want nice creamy pasta",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.108",
+            "ground_truth": "I need to go home straight away",
+            "response": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.122",
+            "ground_truth": "We can't drive to Mallorca",
+            "response": "we can't drive to mallorca",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.163",
+            "ground_truth": "You know your holiday to Barcelona?",
+            "response": "you know your holiday",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.88",
+            "ground_truth": "You've had a very bad experience",
+            "response": "a very bad experience",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.178",
+            "ground_truth": "Okay we could do badminton?",
+            "response": "we can do badminton",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.218",
+            "ground_truth": "I program and make websites",
+            "response": "I can program and make websites",
+            "isTrain": false
         }
     ]
 }
