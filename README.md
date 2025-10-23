@@ -3,42 +3,41 @@
 This should hopefully be quite straightforward...
 
 ```[bash]
+# Using for the first time
 git clone git@github.com:CHiME9-ECHI/ECHI-ListeningTests.git
 cd ECHI-ListeningTests
+
+# Pull if you already have it
+cd ECHI-ListeningTests
+git pull
 ```
 
 To use the `uv` environment:
 
 ```[bash]
-uv venv
-source .venv/bin/activate
 uv sync
+source .venv/bin/activate
 ```
 
 Or with `conda`:
 
 ```[bash]
+# For a new environment
 conda env create -f requirements.yaml
+conda activate echi-listeningtests
+
+# To update an existing environment
+conda activate echi-listeningtests
+conda env update -f requirements.yaml
 ```
 
-Then finally, to run the listening test. This script downloads a subset of the
-~45 segments from google drive (40MB in total) and plays them once and let's you
-type in the words that you hear. You need `SoX` installed (this is how the audio
-is played back).
-
-> **Note:** You can't start typing until the audio has finished.
+The data is now included within the GitHub, so there's no need to download anything extra. To run the test:
 
 ```[bash]
-source mini_test.sh <NAME> <TYPE>
+streamlit run src/listening_test.py
 ```
 
-The `<TYPE>` parameter has a few options:
-
-* `noisy_nopad` to listen to noisy segments
-* `base_nopad` for the summed baseline segments
-* `random` for a random sampling
-
-There's about 45 segments to evaluate, and it goes pretty quickly (around 15 mins).
+There's about 48 segments to evaluate, and it goes pretty quickly (around 15 mins).
 
 When you're done, it should show a plot comparing your scores to the noisy
 transcripts by me.
