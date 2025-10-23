@@ -90,22 +90,30 @@ def instructions():
         "The task here is to recognise speech in noisy conversations. You will be played snippets of a conversation, and asked to type out the speech from one of the people in the conversation."
     )
     st.write(
-        "To avoid ambiguity, all of the audio samples will be grouped so that you're recognising the same speaker in each batch. You will first be given a clean sample for this person's voice, and then 2 warm-up samples to get used to their voice in the conversation. Then, you will be given ~10 samples to listen to."
+        "To avoid ambiguity, all of the audio samples will be grouped so that you're recognising the same speaker in each batch. You will first be given a clean sample for this person's voice, and then 3 warm-up samples to get used to their voice in the conversation. Then, you will be given 9 samples to listen to."
     )
     st.write(
-        "Each sample is 10-15s long, but you won't be expected to transcribe the entire sample. The first part of the sample will be the immediately previous part of the conversation, and then you will see a red line indicating when the target speech begins, and you should type what you hear from the red line to the end of the audio. You will also have the transcript of the previous part of the conversation."
+        "Each sample is 5-10s long, but you won't be expected to transcribe the entire sample. The first part of the sample will be the immediately previous part of the conversation, and then you will see a red line indicating when the target speech begins, and you should type what you hear from the red line to the end of the audio. You may also have the transcript of the previous part of the conversation, depending on which settings you choose."
     )
     st.write(
-        "To make this as similar to real life as possible, you will only be allowed to listen to each audio sample **once** (except for the vlean voice and warm-up samples). In real life, you would only get one chance to hear the speech, so we want to reflect that here."
+        "To make this as similar to real life as possible, you will only be allowed to listen to each audio sample **once** (except for the clean voice and warm-up samples). In real life, you would only get one chance to hear the speech, so we want to reflect that here."
     )
     st.header("Protocol")
     st.markdown(
         """
         1. You will get a clean sample of the target speaker
-        2. You will get 2 warm-up examples, which you can replay as many times as you like to get used to the target voice and scenario
-        3. You will be given ~10 samples to work through for this target voice
+        2. You will get 3 warm-up examples, which you can replay as many times as you like to get used to the target voice and scenario
+        3. You will be given 9 samples to work through for this target voice
         4. Return to step one, but with a new speaker
         """
+    )
+
+    st.write(
+        "For each sample, there is a comments section where you can provide feedback on any aspect of that sample (or anything else)."
+    )
+
+    st.write(
+        "The next page will give you some settings to toggle, and show you an example of what a test will look like."
     )
 
     name = st.text_input("Please enter your name here")
