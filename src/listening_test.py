@@ -87,10 +87,10 @@ def instructions():
     )
     st.header("The Task - Measuring Speech Intelligibility")
     st.write(
-        "The task here is to recognise speech of a target speaker in a multi-party corversation in a noisy (cafeteria-like) condition). You will be played snippets of a conversation, and asked to type out the speech from one of the people in the conversation."
+        "The task here is to recognise speech of a target speaker in a multi-party corversation in a noisy (cafeteria-like) condition. You will be played snippets of a conversation, and asked to type out the speech from one of the people in the conversation."
     )
     st.write(
-        "To avoid ambiguity, all of the audio samples will be grouped by target speakers of whom the recognised words are to be written down, so that you're recognising the same speaker in each batch. You will first be given a clean sample for this person's voice, and then 3 warm-up samples to get used to their voice in the conversation. Then, you will be given 9 samples to listen to."
+        "To avoid ambiguity, all of the audio samples will be grouped by target speakers of whom the recognised words are to be written down, so that you're recognising the same speaker in each batch. You will first be given a clean sample for this person's voice, and then 3 samples to get used to their voice in the conversation for practise (which will not contribute to the final rating). Then, you will be given 9 samples to listen to."
     )
     st.write(
         "Each sample is 5-10s long, but you won't be expected to transcribe the entire sample. The first part of the sample will be the immediately previous part of the conversation, and then you will see a red line indicating when the target speech begins, and you should type what you hear from the red line to the end of the audio (you will see such a visualisation on the next page). You may also have the transcript of the previous part of the conversation, depending on which settings you choose."
@@ -102,8 +102,8 @@ def instructions():
     st.markdown(
         """
         1. You will get a clean sample of the target speaker
-        2. You will get 3 warm-up examples, which you can replay as many times as you like to get used to the target voice and scenario
-        3. You will be given 9 samples to work through for one target speaker's voice
+        2. You will get 3 practise examples, which you can replay as many times as you like to get used to the target voice and scenario
+        3. You will be given 9 samples to listen to and write what you understood for a target speaker's voice
         4. Return to step one, but with a new speaker
         """
     )
@@ -162,6 +162,9 @@ def show_rainbow(rainbow_ftemplate):
 
     pid = SEGMENTS[speaker]["pid"]
     st.header("Clean speech sample for " + pid)
+    st.write(
+        "Please listen to the target speaker's voice (recorded without background noise or interfering speakers)."
+    )
     st.audio(rainbow_ftemplate.format(dataset="dev", pid=pid))
 
 
