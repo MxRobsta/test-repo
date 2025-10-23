@@ -1,0 +1,847 @@
+[
+    {
+        "session": "dev_03",
+        "pid": "P095",
+        "device": "aria",
+        "segments": [
+            {
+                "key": "dev_03.aria.P095.24",
+                "index": 24,
+                "speech": {
+                    "start_sample": 8813415,
+                    "end_sample": 8864039,
+                    "start_time": 550.8384375,
+                    "end_time": 554.0024375
+                },
+                "context": {
+                    "start_time": 545,
+                    "end_time": 554.0024375
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_03.aria.P095.40",
+                "index": 40,
+                "speech": {
+                    "start_sample": 15627826,
+                    "end_sample": 15666162,
+                    "start_time": 976.739125,
+                    "end_time": 979.135125
+                },
+                "context": {
+                    "start_time": 971,
+                    "end_time": 979.135125
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_03.aria.P095.41",
+                "index": 41,
+                "speech": {
+                    "start_sample": 15743027,
+                    "end_sample": 15799795,
+                    "start_time": 983.9391875,
+                    "end_time": 987.4871875
+                },
+                "context": {
+                    "start_time": 978,
+                    "end_time": 987.4871875
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_03.aria.P095.44",
+                "index": 44,
+                "speech": {
+                    "start_sample": 16207939,
+                    "end_sample": 16342531,
+                    "start_time": 1012.9961875,
+                    "end_time": 1021.4081875
+                },
+                "context": {
+                    "start_time": 1007,
+                    "end_time": 1021.4081875
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_03.aria.P095.60",
+                "index": 60,
+                "speech": {
+                    "start_sample": 18371716,
+                    "end_sample": 18420804,
+                    "start_time": 1148.23225,
+                    "end_time": 1151.30025
+                },
+                "context": {
+                    "start_time": 1143,
+                    "end_time": 1151.30025
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_03.aria.P095.68",
+                "index": 68,
+                "speech": {
+                    "start_sample": 20179643,
+                    "end_sample": 20234363,
+                    "start_time": 1261.2276875,
+                    "end_time": 1264.6476875
+                },
+                "context": {
+                    "start_time": 1256,
+                    "end_time": 1264.6476875
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_03.aria.P095.90",
+                "index": 90,
+                "speech": {
+                    "start_sample": 25779544,
+                    "end_sample": 25847576,
+                    "start_time": 1611.2215,
+                    "end_time": 1615.4735
+                },
+                "context": {
+                    "start_time": 1606,
+                    "end_time": 1615.4735
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_03.aria.P095.96",
+                "index": 96,
+                "prespeech": "True true, have you seen Sheffield monopoly? I got it for Christmas",
+                "speech": {
+                    "start_sample": 26924914,
+                    "end_sample": 26991922,
+                    "start_time": 1682.807125,
+                    "end_time": 1686.995125
+                },
+                "context": {
+                    "start_time": 1677,
+                    "end_time": 1686.995125
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_03.aria.P095.109",
+                "index": 109,
+                "speech": {
+                    "start_sample": 29294532,
+                    "end_sample": 29359491,
+                    "start_time": 1830.90825,
+                    "end_time": 1834.9681875
+                },
+                "context": {
+                    "start_time": 1825,
+                    "end_time": 1834.9681875
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_03.aria.P095.113",
+                "index": 113,
+                "speech": {
+                    "start_sample": 31185402,
+                    "end_sample": 31244218,
+                    "start_time": 1949.087625,
+                    "end_time": 1952.763625
+                },
+                "context": {
+                    "start_time": 1944,
+                    "end_time": 1952.763625
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_03.aria.P095.115",
+                "index": 115,
+                "speech": {
+                    "start_sample": 31567363,
+                    "end_sample": 31653315,
+                    "start_time": 1972.9601875,
+                    "end_time": 1978.3321875
+                },
+                "context": {
+                    "start_time": 1967,
+                    "end_time": 1978.3321875
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_03.aria.P095.132",
+                "index": 132,
+                "speech": {
+                    "start_sample": 34512980,
+                    "end_sample": 34561044,
+                    "start_time": 2157.06125,
+                    "end_time": 2160.06525
+                },
+                "context": {
+                    "start_time": 2152,
+                    "end_time": 2160.06525
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            }
+        ]
+    },
+    {
+        "session": "dev_11",
+        "pid": "P183",
+        "device": "ha",
+        "segments": [
+            {
+                "key": "dev_11.ha.P183.26",
+                "index": 26,
+                "speech": {
+                    "start_sample": 3125878,
+                    "end_sample": 3194422,
+                    "start_time": 195.367375,
+                    "end_time": 199.651375
+                },
+                "context": {
+                    "start_time": 190,
+                    "end_time": 199.651375
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_11.ha.P183.29",
+                "index": 29,
+                "speech": {
+                    "start_sample": 3492467,
+                    "end_sample": 3580979,
+                    "start_time": 218.2791875,
+                    "end_time": 223.8111875
+                },
+                "context": {
+                    "start_time": 213,
+                    "end_time": 223.8111875
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_11.ha.P183.32",
+                "index": 32,
+                "speech": {
+                    "start_sample": 3821683,
+                    "end_sample": 3877939,
+                    "start_time": 238.8551875,
+                    "end_time": 242.3711875
+                },
+                "context": {
+                    "start_time": 233,
+                    "end_time": 242.3711875
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_11.ha.P183.53",
+                "index": 53,
+                "speech": {
+                    "start_sample": 6100594,
+                    "end_sample": 6187058,
+                    "start_time": 381.287125,
+                    "end_time": 386.691125
+                },
+                "context": {
+                    "start_time": 376,
+                    "end_time": 386.691125
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_11.ha.P183.121",
+                "index": 121,
+                "speech": {
+                    "start_sample": 15643762,
+                    "end_sample": 15714866,
+                    "start_time": 977.735125,
+                    "end_time": 982.179125
+                },
+                "context": {
+                    "start_time": 972,
+                    "end_time": 982.179125
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_11.ha.P183.124",
+                "index": 124,
+                "speech": {
+                    "start_sample": 16176759,
+                    "end_sample": 16242230,
+                    "start_time": 1011.0474375,
+                    "end_time": 1015.139375
+                },
+                "context": {
+                    "start_time": 1006,
+                    "end_time": 1015.139375
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_11.ha.P183.150",
+                "index": 150,
+                "speech": {
+                    "start_sample": 20158578,
+                    "end_sample": 20256306,
+                    "start_time": 1259.911125,
+                    "end_time": 1266.019125
+                },
+                "context": {
+                    "start_time": 1254,
+                    "end_time": 1266.019125
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_11.ha.P183.158",
+                "index": 158,
+                "speech": {
+                    "start_sample": 21340274,
+                    "end_sample": 21376562,
+                    "start_time": 1333.767125,
+                    "end_time": 1336.035125
+                },
+                "context": {
+                    "start_time": 1328,
+                    "end_time": 1336.035125
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_11.ha.P183.189",
+                "index": 189,
+                "speech": {
+                    "start_sample": 26068598,
+                    "end_sample": 26281526,
+                    "start_time": 1629.287375,
+                    "end_time": 1642.595375
+                },
+                "context": {
+                    "start_time": 1624,
+                    "end_time": 1642.595375
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_11.ha.P183.206",
+                "index": 206,
+                "speech": {
+                    "start_sample": 28311156,
+                    "end_sample": 28345396,
+                    "start_time": 1769.44725,
+                    "end_time": 1771.58725
+                },
+                "context": {
+                    "start_time": 1764,
+                    "end_time": 1771.58725
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_11.ha.P183.212",
+                "index": 212,
+                "speech": {
+                    "start_sample": 28750962,
+                    "end_sample": 28814386,
+                    "start_time": 1796.935125,
+                    "end_time": 1800.899125
+                },
+                "context": {
+                    "start_time": 1791,
+                    "end_time": 1800.899125
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_11.ha.P183.234",
+                "index": 234,
+                "speech": {
+                    "start_sample": 32070263,
+                    "end_sample": 32114231,
+                    "start_time": 2004.3914375,
+                    "end_time": 2007.1394375
+                },
+                "context": {
+                    "start_time": 1999,
+                    "end_time": 2007.1394375
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            }
+        ]
+    },
+    {
+        "session": "dev_12",
+        "pid": "P190",
+        "device": "aria",
+        "segments": [
+            {
+                "key": "dev_12.aria.P190.22",
+                "index": 22,
+                "speech": {
+                    "start_sample": 2915421,
+                    "end_sample": 2971677,
+                    "start_time": 182.2138125,
+                    "end_time": 185.7298125
+                },
+                "context": {
+                    "start_time": 177,
+                    "end_time": 185.7298125
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_12.aria.P190.36",
+                "index": 36,
+                "speech": {
+                    "start_sample": 4311685,
+                    "end_sample": 4376132,
+                    "start_time": 269.4803125,
+                    "end_time": 273.50825
+                },
+                "context": {
+                    "start_time": 264,
+                    "end_time": 273.50825
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_12.aria.P190.50",
+                "index": 50,
+                "speech": {
+                    "start_sample": 5722798,
+                    "end_sample": 5784686,
+                    "start_time": 357.674875,
+                    "end_time": 361.542875
+                },
+                "context": {
+                    "start_time": 352,
+                    "end_time": 361.542875
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_12.aria.P190.86",
+                "index": 86,
+                "speech": {
+                    "start_sample": 9604894,
+                    "end_sample": 9647326,
+                    "start_time": 600.305875,
+                    "end_time": 602.957875
+                },
+                "context": {
+                    "start_time": 595,
+                    "end_time": 602.957875
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_12.aria.P190.107",
+                "index": 107,
+                "speech": {
+                    "start_sample": 11962208,
+                    "end_sample": 12087072,
+                    "start_time": 747.638,
+                    "end_time": 755.442
+                },
+                "context": {
+                    "start_time": 742,
+                    "end_time": 755.442
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_12.aria.P190.134",
+                "index": 134,
+                "speech": {
+                    "start_sample": 16627174,
+                    "end_sample": 16689062,
+                    "start_time": 1039.198375,
+                    "end_time": 1043.066375
+                },
+                "context": {
+                    "start_time": 1034,
+                    "end_time": 1043.066375
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_12.aria.P190.142",
+                "index": 142,
+                "speech": {
+                    "start_sample": 17287675,
+                    "end_sample": 17339835,
+                    "start_time": 1080.4796875,
+                    "end_time": 1083.7396875
+                },
+                "context": {
+                    "start_time": 1075,
+                    "end_time": 1083.7396875
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_12.aria.P190.157",
+                "index": 157,
+                "speech": {
+                    "start_sample": 18680872,
+                    "end_sample": 18717160,
+                    "start_time": 1167.5545,
+                    "end_time": 1169.8225
+                },
+                "context": {
+                    "start_time": 1162,
+                    "end_time": 1169.8225
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_12.aria.P190.177",
+                "index": 177,
+                "speech": {
+                    "start_sample": 20630617,
+                    "end_sample": 20679193,
+                    "start_time": 1289.4135625,
+                    "end_time": 1292.4495625
+                },
+                "context": {
+                    "start_time": 1284,
+                    "end_time": 1292.4495625
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_12.aria.P190.207",
+                "index": 207,
+                "speech": {
+                    "start_sample": 25990903,
+                    "end_sample": 26099895,
+                    "start_time": 1624.4314375,
+                    "end_time": 1631.2434375
+                },
+                "context": {
+                    "start_time": 1619,
+                    "end_time": 1631.2434375
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_12.aria.P190.224",
+                "index": 224,
+                "speech": {
+                    "start_sample": 29338968,
+                    "end_sample": 29391640,
+                    "start_time": 1833.6855,
+                    "end_time": 1836.9775
+                },
+                "context": {
+                    "start_time": 1828,
+                    "end_time": 1836.9775
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_12.aria.P190.240",
+                "index": 240,
+                "speech": {
+                    "start_sample": 33988058,
+                    "end_sample": 34048922,
+                    "start_time": 2124.253625,
+                    "end_time": 2128.057625
+                },
+                "context": {
+                    "start_time": 2119,
+                    "end_time": 2128.057625
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            }
+        ]
+    },
+    {
+        "session": "dev_04",
+        "pid": "P115",
+        "device": "ha",
+        "segments": [
+            {
+                "key": "dev_04.ha.P115.15",
+                "index": 15,
+                "speech": {
+                    "start_sample": 2614875,
+                    "end_sample": 2676763,
+                    "start_time": 163.4296875,
+                    "end_time": 167.2976875
+                },
+                "context": {
+                    "start_time": 158,
+                    "end_time": 167.2976875
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_04.ha.P115.19",
+                "index": 19,
+                "speech": {
+                    "start_sample": 3358822,
+                    "end_sample": 3482150,
+                    "start_time": 209.926375,
+                    "end_time": 217.634375
+                },
+                "context": {
+                    "start_time": 204,
+                    "end_time": 217.634375
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_04.ha.P115.21",
+                "index": 21,
+                "speech": {
+                    "start_sample": 3688549,
+                    "end_sample": 3740709,
+                    "start_time": 230.5343125,
+                    "end_time": 233.7943125
+                },
+                "context": {
+                    "start_time": 225,
+                    "end_time": 233.7943125
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_04.ha.P115.62",
+                "index": 62,
+                "speech": {
+                    "start_sample": 9757796,
+                    "end_sample": 9885732,
+                    "start_time": 609.86225,
+                    "end_time": 617.85825
+                },
+                "context": {
+                    "start_time": 604,
+                    "end_time": 617.85825
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_04.ha.P115.67",
+                "index": 67,
+                "speech": {
+                    "start_sample": 10538577,
+                    "end_sample": 10570769,
+                    "start_time": 658.6610625,
+                    "end_time": 660.6730625
+                },
+                "context": {
+                    "start_time": 653,
+                    "end_time": 660.6730625
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_04.ha.P115.88",
+                "index": 88,
+                "speech": {
+                    "start_sample": 13551693,
+                    "end_sample": 13584397,
+                    "start_time": 846.9808125,
+                    "end_time": 849.0248125
+                },
+                "context": {
+                    "start_time": 841,
+                    "end_time": 849.0248125
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_04.ha.P115.101",
+                "index": 101,
+                "speech": {
+                    "start_sample": 15388775,
+                    "end_sample": 15456807,
+                    "start_time": 961.7984375,
+                    "end_time": 966.0504375
+                },
+                "context": {
+                    "start_time": 956,
+                    "end_time": 966.0504375
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_04.ha.P115.108",
+                "index": 108,
+                "speech": {
+                    "start_sample": 15851619,
+                    "end_sample": 15898147,
+                    "start_time": 990.7261875,
+                    "end_time": 993.6341875
+                },
+                "context": {
+                    "start_time": 985,
+                    "end_time": 993.6341875
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_04.ha.P115.122",
+                "index": 122,
+                "speech": {
+                    "start_sample": 17858657,
+                    "end_sample": 17957409,
+                    "start_time": 1116.1660625,
+                    "end_time": 1122.3380625
+                },
+                "context": {
+                    "start_time": 1111,
+                    "end_time": 1122.3380625
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_04.ha.P115.163",
+                "index": 163,
+                "speech": {
+                    "start_sample": 23098981,
+                    "end_sample": 23144997,
+                    "start_time": 1443.6863125,
+                    "end_time": 1446.5623125
+                },
+                "context": {
+                    "start_time": 1438,
+                    "end_time": 1446.5623125
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_04.ha.P115.178",
+                "index": 178,
+                "speech": {
+                    "start_sample": 25845341,
+                    "end_sample": 25877533,
+                    "start_time": 1615.3338125,
+                    "end_time": 1617.3458125
+                },
+                "context": {
+                    "start_time": 1610,
+                    "end_time": 1617.3458125
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            },
+            {
+                "key": "dev_04.ha.P115.218",
+                "index": 218,
+                "speech": {
+                    "start_sample": 30585440,
+                    "end_sample": 30759456,
+                    "start_time": 1911.59,
+                    "end_time": 1922.466
+                },
+                "context": {
+                    "start_time": 1906,
+                    "end_time": 1922.466
+                },
+                "target_prior": "",
+                "other_prior": "",
+                "ground_truth": ""
+            }
+        ]
+    }
+]
