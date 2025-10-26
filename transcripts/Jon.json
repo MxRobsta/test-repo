@@ -1,0 +1,341 @@
+{
+    "name": "Jon",
+    "segments": [
+        {
+            "key": "dev_03.aria.P095.24",
+            "ground_truth": "Nah you don't, you have to hold it ",
+            "response": "I just can't open it",
+            "commment": "Same as the setup sample - not that it matters.",
+            "isTrain": true
+        },
+        {
+            "key": "dev_03.aria.P095.40",
+            "ground_truth": "That goes down very quickly though",
+            "response": "very quickly",
+            "commment": "Comments don't get cleared.",
+            "isTrain": true
+        },
+        {
+            "key": "dev_03.aria.P095.41",
+            "ground_truth": "I used to take cold showers every morning",
+            "response": "yeah I meant it not really true",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_03.aria.P095.44",
+            "ground_truth": "I already noticed a difference after like a week.",
+            "response": "different software copy you can",
+            "commment": "Better not to put that extra screen before the first real sample. Breaks the flow.",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.60",
+            "ground_truth": "I don't really support seasonal change",
+            "response": "I don't really support seasonal change",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.68",
+            "ground_truth": "Is it quite humid there",
+            "response": "yeah is there",
+            "commment": "(I'm too old for this!)",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.90",
+            "ground_truth": "Yeah France recently has got much more into it",
+            "response": "one of the flash points",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.96",
+            "ground_truth": "I've seen Manchester Monopoly, I've never seen just Sheffield",
+            "response": "editions",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.109",
+            "ground_truth": "Exciting's a strong word for what that was",
+            "response": "It's an engineering thing",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.113",
+            "ground_truth": "Yeah like kinda on the outskirts of town",
+            "response": "like the outskirts of town",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.115",
+            "ground_truth": "Like it was a bit, like, overhyped",
+            "response": "it is a bit heights",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_03.aria.P095.132",
+            "ground_truth": "Oh, do you skate? Oh that's cool",
+            "response": "??",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.26",
+            "ground_truth": "Scream? of yeah that's popular, the Scream mask",
+            "response": "yeah extreme",
+            "commment": "No need to give the P183 number in previous screens. Participants don't need to know that.",
+            "isTrain": true
+        },
+        {
+            "key": "dev_11.ha.P183.29",
+            "ground_truth": "Really I can't remember off the top of my head.",
+            "response": "literally I",
+            "commment": "Wonder if there is a way of getting a spellchecker in the reponse box?",
+            "isTrain": true
+        },
+        {
+            "key": "dev_11.ha.P183.32",
+            "ground_truth": "So what kinda costume theme for the next costume party?",
+            "response": "but what that question next buying",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_11.ha.P183.53",
+            "ground_truth": "Your parents probably raised you properly then?",
+            "response": "read it properly i mean",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.121",
+            "ground_truth": "Well when I hear traditional art, I just think like, drawing",
+            "response": "what I was thinking",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.124",
+            "ground_truth": "They can be, like I wouldn't say so",
+            "response": "I wouldn't always say so",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.150",
+            "ground_truth": "Yeah, I mean, I've seen a watch, I've seen a ring",
+            "response": "yeah i",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.158",
+            "ground_truth": "I could imagine, like, fitness tracker shoes.",
+            "response": "I think the shop is huge",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.189",
+            "ground_truth": "Did you guys hear of that one thing that just came on Netflix?",
+            "response": "on netflix adolescence ",
+            "commment": "Oh there is a spell checker :-). I just hadn't made any spelling errors until now!",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.206",
+            "ground_truth": "Very surprising, did you see the new one he's working on?",
+            "response": "see the new one",
+            "commment": "There's something weird in the waveform. The target is \"that was a very good film\" but the waveform shows two utterances with a long gap. I guess this is an alignment problem. ",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.212",
+            "ground_truth": "I think Brothers is a really good film",
+            "response": "what is a",
+            "commment": "This looks wrong. The waveform does not seem to correspond to the target text.",
+            "isTrain": false
+        },
+        {
+            "key": "dev_11.ha.P183.234",
+            "ground_truth": "Anyway, which film would you add to the movie marathon",
+            "response": "anyway all",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.22",
+            "ground_truth": "Yeah it's like even TikTok, YouTube",
+            "response": "??",
+            "commment": "(oops clicked the wrong button and skipped over the rainbow passage and no way back...)",
+            "isTrain": true
+        },
+        {
+            "key": "dev_12.aria.P190.36",
+            "ground_truth": "Just use the lid, that's what I do",
+            "response": "that's what I do",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_12.aria.P190.50",
+            "ground_truth": "No ours stays on luckily",
+            "response": "white",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_12.aria.P190.86",
+            "ground_truth": "The idea of just, just steak",
+            "response": "the idea is",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.107",
+            "ground_truth": "To be fair, that wouldn't be that bad",
+            "response": "yeah that wouldn't be that bad",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.134",
+            "ground_truth": "Us forcing you to watch all three of them",
+            "response": "after school is a whatsapp",
+            "commment": "Definitely not right: \"Maybe the per...\" all before the waveform starts",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.142",
+            "ground_truth": "She's in it, I don't think anyone else",
+            "response": "she's in it I don't think anyone else",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.157",
+            "ground_truth": "Same, I haven't finished that",
+            "response": "I haven't finished that",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.177",
+            "ground_truth": "Do you actually get coursework done?",
+            "response": "they're actually different",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.207",
+            "ground_truth": "See we got to pick a language",
+            "response": "should we not pick a language",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.224",
+            "ground_truth": "Yeah, you've got to have something",
+            "response": "You've got to have something",
+            "commment": "It's perhaps a bit confusing that the durations are all different so time axis resolution changes. ",
+            "isTrain": false
+        },
+        {
+            "key": "dev_12.aria.P190.240",
+            "ground_truth": "Yeah having older siblings who were like great at everything sucks",
+            "response": "were like great at everything",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.15",
+            "ground_truth": "No but London is nowhere near the sea is it",
+            "response": "In London there's never any seagulls",
+            "commment": "Just needs, \"Please listen to the target speaker's voice\" on rainbow page. And then just number the samples 1 to 12 with no breaks. We don't need to even tell the listener that the first three are training - unless we are going to present them diferently. e.g. allowing multiple plays or showing the correct response.",
+            "isTrain": true
+        },
+        {
+            "key": "dev_04.ha.P115.19",
+            "ground_truth": "It's very clean, Sheffield. It's really clean",
+            "response": "It's very clean",
+            "commment": "Is the transcribe waveform correct - I can only hear the male voice during the second part.",
+            "isTrain": true
+        },
+        {
+            "key": "dev_04.ha.P115.21",
+            "ground_truth": "I mean, it's a much bigger city",
+            "response": "I mean it's a much bigger city",
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_04.ha.P115.62",
+            "ground_truth": "I have no free time. Genuinely, I have no free time.",
+            "response": "I have no genuinely I have no free time",
+            "commment": "\"I have no\" is said before the red line appears.",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.67",
+            "ground_truth": "Speaking of which, I want to go tomorrow.",
+            "response": "I want to go",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.101",
+            "ground_truth": "Also I do want nice creamy pasta",
+            "response": "also I icecream",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.108",
+            "ground_truth": "I need to go home straight away",
+            "response": "I'm so ten feet away",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.122",
+            "ground_truth": "We can't drive to Mallorca",
+            "response": "you can't drive to Mallorca",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.163",
+            "ground_truth": "You know your holiday to Barcelona?",
+            "response": "you know your",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.88",
+            "ground_truth": "You've had a very bad experience",
+            "response": "a very bad experience",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.178",
+            "ground_truth": "Okay we could do badminton?",
+            "response": "I think we can be",
+            "commment": "",
+            "isTrain": false
+        },
+        {
+            "key": "dev_04.ha.P115.218",
+            "ground_truth": "I program and make websites",
+            "response": "I programme",
+            "commment": "",
+            "isTrain": false
+        }
+    ]
+}
