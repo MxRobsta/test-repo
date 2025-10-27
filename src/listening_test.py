@@ -35,8 +35,19 @@ def get_current():
     return st.session_state.current
 
 
-def encode_current():
-    return json.dumps(st.session_state.current)
+def encode_current(prep=""):
+    for k, v in get_current().items():
+        prep += str(k) + str(v)
+    return prep
+
+
+def unique_name(name):
+    existing = os.listdir("transcripts")
+    index = 0
+    response = name
+    while f"{response}.json" in existing:
+        response = name + str(index)
+    return response
 
 
 def append_save(response):
@@ -212,8 +223,12 @@ def show_sample(segment_ftemplate, dummy_stage=None):
 
     st.video(fpath, "video/mp4")
 
-    # comment = st.text_input("Comments here")
-    return response, ""
+    if dummy_stage is None:
+        comment = st.text_input("Comments here", key=encode_current("comment"))
+    else:
+        comment = ""
+
+    return response, comment
 
 
 def continue_test(response):
@@ -223,6 +238,8 @@ def continue_test(response):
     if state == "instructions":
         st.session_state.current["state"] = "rainbow"
         st.session_state.current["speaker"] = 0
+        response = unique_name(response)
+        print(response)
         st.session_state.responses = {"name": response, "segments": []}
     elif state == "rainbow":
         st.session_state.current = {
