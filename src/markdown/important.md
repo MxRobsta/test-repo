@@ -8,3 +8,6 @@ feel like you're "failing"
 - On the more challenging samples, please write down **any** words you think
 belong to the target speaker (after the red line). It's important that we record
 anything you understand correctly.
+- You **cannot** go back at any point during the test. To avoid accidentally
+clicking through, on each page you must check the "Confirm you want to continue"
+box before you can proceed to the next page.
