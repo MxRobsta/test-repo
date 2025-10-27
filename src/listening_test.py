@@ -81,64 +81,29 @@ def check_continue():
 
 
 def instructions():
-    st.title("Instructions")
-    st.write(
-        "Welcome the the CHiME-9 ECHI Listening Test. Here you'll get some basic instructions."
-    )
-    st.header("The Task - Measuring Speech Intelligibility")
-    st.write(
-        "The task here is to recognise speech of a target speaker in a multi-party corversation in a noisy (cafeteria-like) condition. You will be played snippets of a conversation, and asked to type out the speech from one of the people in the conversation."
-    )
-    st.write(
-        "To avoid ambiguity, all of the audio samples will be grouped by target speakers of whom the recognised words are to be written down, so that you're recognising the same speaker in each batch. You will first be given a clean sample for this person's voice, and then 3 samples to get used to their voice in the conversation for practise (which will not contribute to the final rating). Then, you will be given 9 samples to listen to."
-    )
-    st.write(
-        "Each sample is 5-10s long, but you won't be expected to transcribe the entire sample. The first part of the sample will be the immediately previous part of the conversation, and then you will see a red line indicating when the target speech begins, and you should type what you hear from the red line to the end of the audio (you will see such a visualisation on the next page). You may also have the transcript of the previous part of the conversation, depending on which settings you choose."
-    )
-    st.write(
-        "To make this as similar to real life as possible, you will only be allowed to listen to each audio sample **once** (except for the clean voice and warm-up samples). In real life, you would only get one chance to hear the speech, so we want to reflect that here. **COMMENT SG: SHOULD WE ALLOW LISTENING TO THE PART PREVIOUS TO THE RED LINE MULTIPLE TIMES?**"
-    )
-    st.header("Protocol")
-    st.markdown(
-        """
-        1. You will get a clean sample of the target speaker
-        2. You will get 3 practise examples, which you can replay as many times as you like to get used to the target voice and scenario
-        3. You will be given 9 samples to listen to and write what you understood for a target speaker's voice
-        4. Return to step one, but with a new speaker
-        """
-    )
+    tab_md = [
+        "Welcome",
+        "Volume",
+        "Task",
+        "Transcript",
+        "Training",
+        "Summary",
+        "Important",
+        "Begin",
+    ]
 
-    st.write(
-        "For each sample, there is a comments section where you can provide feedback on any aspect of that sample (or anything else)."
-    )
+    stabs = st.tabs(tab_md)
+    for tmd, tab in zip(tab_md, stabs):
+        tmd = tmd.lower()
+        with open(f"src/markdown/{tmd}.md", "r") as file:
+            text = file.read()
+        tab.markdown(text)
 
-    st.write(
-        "The next page will give you some settings to toggle, and show you an example of what a test will look like."
-    )
-
-    name = st.text_input("Please enter your name here")
-    st.session_state.responses = {"name": name, "segments": []}
-
-
-def settings(segment_ftemplate, anim_types, transcript_types):
-
-    st.header("Settings")
-    st.write(
-        "Here you can toggle some settings for the listening tests. A preview is shown below, and will update when you toggle the settings."
-    )
-    st.write("**Please also use this page to tune your volume to a comfortable level after you listened to the audio example below.**")
-
-    cola, colb = st.columns(2)
-    with cola:
-        anim = st.selectbox("anim_type", tuple(anim_types), index=0)
-        st.session_state.anim_type = anim
-    with colb:
-        tra = st.selectbox("transcript type", tuple(transcript_types), index=2)
-        st.session_state.transcript_type = tra
-
-    st.subheader("Example Sample")
-
-    show_sample(segment_ftemplate, True)
+        if tmd == "begin":
+            name = tab.text_input("Name")
+            tab.button(
+                "Continue", on_click=continue_test, args=[name], disabled=len(name) == 0
+            )
 
 
 def pretrain():
@@ -161,7 +126,7 @@ def show_rainbow(rainbow_ftemplate):
     speaker = get_current()["speaker"]
 
     pid = SEGMENTS[speaker]["pid"]
-    st.header("Clean speech sample for " + pid)
+    st.header("Clean speech sample for the target")
     st.write(
         "Please listen to the target speaker's voice (recorded without background noise or interfering speakers)."
     )
@@ -234,9 +199,8 @@ def continue_test(response):
     state = current["state"]
 
     if state == "instructions":
-        st.session_state.current["state"] = "settings"
-    elif state == "settings":
-        st.session_state.current = check_continue()
+
+        st.session_state.current["state"] = "rainbow"
     elif state == "rainbow":
         st.session_state.current = {"state": "pretrain", "speaker": current["speaker"]}
     elif state == "pretrain":
@@ -307,10 +271,6 @@ def main():
 
     if state == "instructions":
         response = instructions()
-    elif state == "settings":
-        response = settings(
-            cfg.exp_segment_video, cfg.animation_types, cfg.transcript_types
-        )
     elif state == "rainbow":
         response = show_rainbow(cfg.test_rainbow_file)
     elif state == "pretrain":
@@ -330,7 +290,7 @@ def main():
         st.download_button(
             label="Download Your Data", data=data, file_name=f"{name}.json"
         )
-    else:
+    elif state != "instructions":
         st.button("Continue", on_click=continue_test, args=[response])
 
 
