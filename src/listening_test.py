@@ -170,10 +170,11 @@ def show_sample(segment_ftemplate, dummy_stage=None):
     session = info["session"]
     device = info["device"]
     pid = info["pid"]
+    exp = info["experiment"]
 
     fpath = segment_ftemplate.format(
         dataset="dev",
-        exp="baseline",
+        exp=exp,
         session=session,
         device=device,
         pid=pid,

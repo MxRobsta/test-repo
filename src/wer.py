@@ -10,6 +10,8 @@ from omegaconf import DictConfig
 def main(cfg: DictConfig):
     plot_wer(cfg)
 
+    plt.savefig(f"transcripts/{cfg.listener}.png")
+
 
 def plot_wer(cfg: DictConfig, streamlit=False):
 

@@ -41,7 +41,7 @@ def load_audio(fpath, target_sr, normalize=None) -> Tuple[np.ndarray, int]:
 
 
 def rms_norm(audio, target_rms):
-    audio_rms = np.sqrt(np.mean(np.square(audio)))
+    audio_rms = np.sqrt(np.mean(np.square(audio))) + 1e-5
 
     audio *= target_rms / audio_rms
 

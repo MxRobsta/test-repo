@@ -3,6 +3,8 @@
         "session": "dev_03",
         "pid": "P095",
         "device": "aria",
+        "experiment": "ct",
+        "device_pos": 2,
         "segments": [
             {
                 "key": "dev_03.aria.P095.24",
@@ -233,9 +235,248 @@
         ]
     },
     {
+        "session": "dev_04",
+        "pid": "P115",
+        "device": "ha",
+        "experiment": "ct",
+        "device_pos": 1,
+        "segments": [
+            {
+                "key": "dev_04.ha.P115.15",
+                "index": 15,
+                "speech": {
+                    "start_sample": 2614875,
+                    "end_sample": 2676763,
+                    "start_time": 163.0,
+                    "end_time": 165.056
+                },
+                "context": {
+                    "start_time": 158.931,
+                    "end_time": 163.0
+                },
+                "target_prior": "There's no seagulls up here, I haven't seen one seagull here",
+                "other_prior": "P3: Yeah well we're nowhere near the sea",
+                "ground_truth": "No but London is nowhere near the sea is it",
+                "start_time": 158.931,
+                "end_time": 165.056
+            },
+            {
+                "key": "dev_04.ha.P115.19",
+                "index": 19,
+                "speech": {
+                    "start_sample": 3358822,
+                    "end_sample": 3482150,
+                    "start_time": 209.926375,
+                    "end_time": 213.044
+                },
+                "context": {
+                    "start_time": 207,
+                    "end_time": 209.926375
+                },
+                "target_prior": "",
+                "other_prior": "P4: Thats- I think that's probably the best suggestions, although Sheffield",
+                "ground_truth": "It's very clean, Sheffield. It's really clean",
+                "start_time": 207,
+                "end_time": 213.044
+            },
+            {
+                "key": "dev_04.ha.P115.21",
+                "index": 21,
+                "speech": {
+                    "start_sample": 3688549,
+                    "end_sample": 3740709,
+                    "start_time": 230.5343125,
+                    "end_time": 232.0
+                },
+                "context": {
+                    "start_time": 224.3,
+                    "end_time": 230.5343125
+                },
+                "target_prior": "",
+                "other_prior": "P4: And there's like a lot of lit- of littering it's like, Leeds is dirty compared to Sheffield.",
+                "ground_truth": "I mean, it's a much bigger city",
+                "start_time": 224.3,
+                "end_time": 232.0
+            },
+            {
+                "key": "dev_04.ha.P115.62",
+                "index": 62,
+                "speech": {
+                    "start_sample": 9757796,
+                    "end_sample": 9885732,
+                    "start_time": 609.86225,
+                    "end_time": 612.6
+                },
+                "context": {
+                    "start_time": 603,
+                    "end_time": 609.86225
+                },
+                "target_prior": "",
+                "other_prior": "P4: I'll be the first to say, I maybe don't do as much work as I should in my free time.",
+                "ground_truth": "I have no free time. Genuinely, I have no free time.",
+                "start_time": 603,
+                "end_time": 612.6
+            },
+            {
+                "key": "dev_04.ha.P115.67",
+                "index": 67,
+                "speech": {
+                    "start_sample": 10538577,
+                    "end_sample": 10570769,
+                    "start_time": 658.6610625,
+                    "end_time": 660.6730625
+                },
+                "context": {
+                    "start_time": 653.0,
+                    "end_time": 658.6610625
+                },
+                "target_prior": "Yeah, yeah",
+                "other_prior": "P3: Because I was going to say, we are kind of all doing that already because we all started going to the gym and stuff",
+                "ground_truth": "Speaking of which, I want to go tomorrow.",
+                "start_time": 653.0,
+                "end_time": 660.6730625
+            },
+            {
+                "key": "dev_04.ha.P115.101",
+                "index": 101,
+                "speech": {
+                    "start_sample": 15388775,
+                    "end_sample": 15456807,
+                    "start_time": 961.7984375,
+                    "end_time": 964.5
+                },
+                "context": {
+                    "start_time": 957.2,
+                    "end_time": 961.7984375
+                },
+                "target_prior": "Yeah...",
+                "other_prior": "P4: I think they'd be annoyed if we turned up only for tiramisu and then left",
+                "ground_truth": "Also I do want nice creamy pasta",
+                "start_time": 957.2,
+                "end_time": 964.5
+            },
+            {
+                "key": "dev_04.ha.P115.108",
+                "index": 108,
+                "speech": {
+                    "start_sample": 15851619,
+                    "end_sample": 15898147,
+                    "start_time": 990.7261875,
+                    "end_time": 992.122
+                },
+                "context": {
+                    "start_time": 985.753,
+                    "end_time": 990.7261875
+                },
+                "target_prior": "",
+                "other_prior": "P4: I was going do work in the Diamond but I want to get my washing on so I got my washing on then do work while I wash",
+                "ground_truth": "I need to go home straight away",
+                "start_time": 985.753,
+                "end_time": 992.122
+            },
+            {
+                "key": "dev_04.ha.P115.122",
+                "index": 122,
+                "speech": {
+                    "start_sample": 17858657,
+                    "end_sample": 17957409,
+                    "start_time": 1374.603,
+                    "end_time": 1377.037
+                },
+                "context": {
+                    "start_time": 1370.8,
+                    "end_time": 1374.603
+                },
+                "target_prior": "Can we please go to Mallorca though in the summer?",
+                "other_prior": "P4: Only if we can drive though",
+                "ground_truth": "We can't drive to Mallorca",
+                "start_time": 1370.8,
+                "end_time": 1377.037
+            },
+            {
+                "key": "dev_04.ha.P115.163",
+                "index": 163,
+                "speech": {
+                    "start_sample": 23098981,
+                    "end_sample": 23144997,
+                    "start_time": 1443.6863125,
+                    "end_time": 1445.686
+                },
+                "context": {
+                    "start_time": 1439.262,
+                    "end_time": 1443.6863125
+                },
+                "target_prior": "",
+                "other_prior": "P3: They should try doing this\n\nP4: This would be great",
+                "ground_truth": "You know your holiday to Barcelona?",
+                "start_time": 1439.262,
+                "end_time": 1445.686
+            },
+            {
+                "key": "dev_04.ha.P115.88",
+                "index": 170,
+                "speech": {
+                    "start_sample": 13551693,
+                    "end_sample": 13584397,
+                    "start_time": 1584.929,
+                    "end_time": 1586.795
+                },
+                "context": {
+                    "start_time": 1578.723,
+                    "end_time": 1584.929
+                },
+                "target_prior": "Yeah...",
+                "other_prior": "P4: That was when I got food poisoning, Turkey was just before year 13. Would not recommend Turkey",
+                "ground_truth": "You've had a very bad experience",
+                "start_time": 1578.723,
+                "end_time": 1586.795
+            },
+            {
+                "key": "dev_04.ha.P115.178",
+                "index": 185,
+                "speech": {
+                    "start_sample": 25845341,
+                    "end_sample": 25877533,
+                    "start_time": 1659.121,
+                    "end_time": 1660.784
+                },
+                "context": {
+                    "start_time": 1656.2,
+                    "end_time": 1659.121
+                },
+                "target_prior": "I'm not playing Fortnite",
+                "other_prior": "P4: Tennis is just worse badminton",
+                "ground_truth": "Okay we could do badminton?",
+                "start_time": 1656.2,
+                "end_time": 1660.784
+            },
+            {
+                "key": "dev_04.ha.P115.218",
+                "index": 218,
+                "speech": {
+                    "start_sample": 30585440,
+                    "end_sample": 30759456,
+                    "start_time": 1910.95,
+                    "end_time": 1913.4
+                },
+                "context": {
+                    "start_time": 1907.0,
+                    "end_time": 1910.95
+                },
+                "target_prior": "",
+                "other_prior": "P4: Digital art for me, being able to draw would be sick\n\nP3: Or digital art, yeah",
+                "ground_truth": "I program and make websites",
+                "start_time": 1907.0,
+                "end_time": 1913.4
+            }
+        ]
+    },
+    {
         "session": "dev_11",
         "pid": "P183",
         "device": "ha",
+        "experiment": "baseline",
+        "device_pos": 1,
         "segments": [
             {
                 "key": "dev_11.ha.P183.26",
@@ -311,7 +552,7 @@
                 "other_prior": "P4: I only has my first phone when I was like 15, so I wasn't allowed to watch anything. I'm a bit behind on that stuff",
                 "ground_truth": "Your parents probably raised you properly then?",
                 "start_time": 377.702,
-                "end_time": 387.03
+                "end_time": 385.5
             },
             {
                 "key": "dev_11.ha.P183.121",
@@ -406,7 +647,7 @@
                 "other_prior": "P4: Pick one film... TV shows? An entire TV show in a marathon\n\nP2: Film... But like... surely a series, I was going to say",
                 "ground_truth": "Did you guys hear of that one thing that just came on Netflix?",
                 "start_time": 1623.471,
-                "end_time": 1633.812
+                "end_time": 1633.0
             },
             {
                 "key": "dev_11.ha.P183.206",
@@ -471,6 +712,8 @@
         "session": "dev_12",
         "pid": "P190",
         "device": "aria",
+        "experiment": "baseline",
+        "device_pos": 1,
         "segments": [
             {
                 "key": "dev_12.aria.P190.22",
@@ -699,241 +942,6 @@
                 "ground_truth": "Yeah having older siblings who were like great at everything sucks",
                 "start_time": 2119,
                 "end_time": 2128.057625
-            }
-        ]
-    },
-    {
-        "session": "dev_04",
-        "pid": "P115",
-        "device": "ha",
-        "segments": [
-            {
-                "key": "dev_04.ha.P115.15",
-                "index": 15,
-                "speech": {
-                    "start_sample": 2614875,
-                    "end_sample": 2676763,
-                    "start_time": 163.0,
-                    "end_time": 165.056
-                },
-                "context": {
-                    "start_time": 158.931,
-                    "end_time": 163.0
-                },
-                "target_prior": "There's no seagulls up here, I haven't seen one seagull here",
-                "other_prior": "P3: Yeah well we're nowhere near the sea",
-                "ground_truth": "No but London is nowhere near the sea is it",
-                "start_time": 158.931,
-                "end_time": 165.056
-            },
-            {
-                "key": "dev_04.ha.P115.19",
-                "index": 19,
-                "speech": {
-                    "start_sample": 3358822,
-                    "end_sample": 3482150,
-                    "start_time": 209.926375,
-                    "end_time": 213.044
-                },
-                "context": {
-                    "start_time": 207,
-                    "end_time": 209.926375
-                },
-                "target_prior": "",
-                "other_prior": "P4: Thats- I think that's probably the best suggestions, although Sheffield",
-                "ground_truth": "It's very clean, Sheffield. It's really clean",
-                "start_time": 207,
-                "end_time": 213.044
-            },
-            {
-                "key": "dev_04.ha.P115.21",
-                "index": 21,
-                "speech": {
-                    "start_sample": 3688549,
-                    "end_sample": 3740709,
-                    "start_time": 230.5343125,
-                    "end_time": 232.0
-                },
-                "context": {
-                    "start_time": 224.3,
-                    "end_time": 230.5343125
-                },
-                "target_prior": "",
-                "other_prior": "P4: And there's like a lot of lit- of littering it's like, Leeds is dirty compared to Sheffield.",
-                "ground_truth": "I mean, it's a much bigger city",
-                "start_time": 224.3,
-                "end_time": 232.0
-            },
-            {
-                "key": "dev_04.ha.P115.62",
-                "index": 62,
-                "speech": {
-                    "start_sample": 9757796,
-                    "end_sample": 9885732,
-                    "start_time": 609.86225,
-                    "end_time": 612.6
-                },
-                "context": {
-                    "start_time": 603,
-                    "end_time": 609.86225
-                },
-                "target_prior": "",
-                "other_prior": "P4: I'll be the first to say, I maybe don't do as much work as I should in my free time.",
-                "ground_truth": "I have no free time. Genuinely, I have no free time.",
-                "start_time": 603,
-                "end_time": 612.6
-            },
-            {
-                "key": "dev_04.ha.P115.67",
-                "index": 67,
-                "speech": {
-                    "start_sample": 10538577,
-                    "end_sample": 10570769,
-                    "start_time": 658.6610625,
-                    "end_time": 660.6730625
-                },
-                "context": {
-                    "start_time": 653.0,
-                    "end_time": 658.6610625
-                },
-                "target_prior": "Yeah, yeah",
-                "other_prior": "P3: Because I was going to say, we are kind of all doing that already because we all started going to the gym and stuff",
-                "ground_truth": "Speaking of which, I want to go tomorrow.",
-                "start_time": 653.0,
-                "end_time": 660.6730625
-            },
-            {
-                "key": "dev_04.ha.P115.101",
-                "index": 101,
-                "speech": {
-                    "start_sample": 15388775,
-                    "end_sample": 15456807,
-                    "start_time": 961.7984375,
-                    "end_time": 966.0504375
-                },
-                "context": {
-                    "start_time": 957.2,
-                    "end_time": 961.7984375
-                },
-                "target_prior": "Yeah...",
-                "other_prior": "P4: I think they'd be annoyed if we turned up only for tiramisu and then left",
-                "ground_truth": "Also I do want nice creamy pasta",
-                "start_time": 957.2,
-                "end_time": 966.0504375
-            },
-            {
-                "key": "dev_04.ha.P115.108",
-                "index": 108,
-                "speech": {
-                    "start_sample": 15851619,
-                    "end_sample": 15898147,
-                    "start_time": 990.7261875,
-                    "end_time": 992.122
-                },
-                "context": {
-                    "start_time": 985.753,
-                    "end_time": 990.7261875
-                },
-                "target_prior": "",
-                "other_prior": "P4: I was going do work in the Diamond but I want to get my washing on so I got my washing on then do work while I wash",
-                "ground_truth": "I need to go home straight away",
-                "start_time": 985.753,
-                "end_time": 992.122
-            },
-            {
-                "key": "dev_04.ha.P115.122",
-                "index": 122,
-                "speech": {
-                    "start_sample": 17858657,
-                    "end_sample": 17957409,
-                    "start_time": 1374.603,
-                    "end_time": 1377.037
-                },
-                "context": {
-                    "start_time": 1370.8,
-                    "end_time": 1374.603
-                },
-                "target_prior": "Can we please go to Mallorca though in the summer?",
-                "other_prior": "P4: Only if we can drive though",
-                "ground_truth": "We can't drive to Mallorca",
-                "start_time": 1370.8,
-                "end_time": 1377.037
-            },
-            {
-                "key": "dev_04.ha.P115.163",
-                "index": 163,
-                "speech": {
-                    "start_sample": 23098981,
-                    "end_sample": 23144997,
-                    "start_time": 1443.6863125,
-                    "end_time": 1445.686
-                },
-                "context": {
-                    "start_time": 1439.262,
-                    "end_time": 1443.6863125
-                },
-                "target_prior": "",
-                "other_prior": "P3: They should try doing this\n\nP4: This would be great",
-                "ground_truth": "You know your holiday to Barcelona?",
-                "start_time": 1439.262,
-                "end_time": 1445.686
-            },
-            {
-                "key": "dev_04.ha.P115.88",
-                "index": 170,
-                "speech": {
-                    "start_sample": 13551693,
-                    "end_sample": 13584397,
-                    "start_time": 1584.929,
-                    "end_time": 1586.795
-                },
-                "context": {
-                    "start_time": 1578.723,
-                    "end_time": 1584.929
-                },
-                "target_prior": "Yeah...",
-                "other_prior": "P4: That was when I got food poisoning, Turkey was just before year 13. Would not recommend Turkey",
-                "ground_truth": "You've had a very bad experience",
-                "start_time": 1578.723,
-                "end_time": 1586.795
-            },
-            {
-                "key": "dev_04.ha.P115.178",
-                "index": 185,
-                "speech": {
-                    "start_sample": 25845341,
-                    "end_sample": 25877533,
-                    "start_time": 1659.121,
-                    "end_time": 1660.784
-                },
-                "context": {
-                    "start_time": 1656.2,
-                    "end_time": 1659.121
-                },
-                "target_prior": "I'm not playing Fortnite",
-                "other_prior": "P4: Tennis is just worse badminton",
-                "ground_truth": "Okay we could do badminton?",
-                "start_time": 1656.2,
-                "end_time": 1660.784
-            },
-            {
-                "key": "dev_04.ha.P115.218",
-                "index": 218,
-                "speech": {
-                    "start_sample": 30585440,
-                    "end_sample": 30759456,
-                    "start_time": 1910.95,
-                    "end_time": 1913.4
-                },
-                "context": {
-                    "start_time": 1907.0,
-                    "end_time": 1910.95
-                },
-                "target_prior": "",
-                "other_prior": "P4: Digital art for me, being able to draw would be sick\n\nP3: Or digital art, yeah",
-                "ground_truth": "I program and make websites",
-                "start_time": 1907.0,
-                "end_time": 1913.4
             }
         ]
     }

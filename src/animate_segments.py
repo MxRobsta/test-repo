@@ -33,7 +33,7 @@ def framewise_rms(snippet):
     return rms
 
 
-def animate_waveform(snippet, target_start, fpath):
+def animate_waveform(snippet, target_start, person, fpath):
 
     fig, ax = plt.subplots(figsize=[6, 2])
     (line1,) = ax.plot([], [], "tab:blue")
@@ -41,8 +41,6 @@ def animate_waveform(snippet, target_start, fpath):
     dt = 0.01
     signal_seconds = snippet.shape[0] / PLOT_FS
     t = np.linspace(0, signal_seconds, len(snippet))
-
-    # print(min(snippet), max(snippet))
 
     def init():
         ymin, ymax = min(snippet), max(snippet)
@@ -68,6 +66,10 @@ def animate_waveform(snippet, target_start, fpath):
         mid = (target_start + signal_seconds) / 2
 
         ax.text(mid, text_top, "Transcribe here", ha="center", va="top")
+        if person == "target":
+            ax.text(0, ymax, "Target audio", va="top", ha="left")
+        else:
+            ax.text(0, ymax, "Summed audio", va="top", ha="left")
 
         return (line1,)
 
@@ -94,7 +96,6 @@ def animate_waveform(snippet, target_start, fpath):
     if not Path(fpath).parent.exists():
         Path(fpath).parent.mkdir(parents=True)
 
-    # plt.show()
     ani.save(fpath, writer="ffmpeg", fps=1 / dt)
     plt.close(fig)
 
@@ -114,6 +115,7 @@ def main(cfg: DictConfig):
         session = sess_info["session"]
         device = sess_info["device"]
         pid = sess_info["pid"]
+        # pos = f"pos{sess_info['device_pos']}"
         sum_waveform, fs = load_refaudio(
             audio_fpath,
             session,
@@ -125,9 +127,9 @@ def main(cfg: DictConfig):
             audio_fpath, session, device, pid, target_sr=PLOT_FS
         )
 
-        target_power, _ = load_refaudio(
-            audio_fpath, session, device, pid, target_sr=AUDIO_FS
-        )
+        # target_power, _ = load_refaudio(
+        #     audio_fpath, session, device, pid, target_sr=AUDIO_FS
+        # )
 
         for seg in tqdm(sess_info["segments"], desc=f"{session} {pid}"):
             start = int(seg["start_time"] * PLOT_FS)
@@ -143,7 +145,7 @@ def main(cfg: DictConfig):
                 anim="sumwave",
             )
             if not Path(fpath).exists() or cfg.overwrite:
-                animate_waveform(snippet, target_start, fpath)
+                animate_waveform(snippet, target_start, "summed", fpath)
 
             snippet = rms_norm(target_waveform[start:end], 0.05)
 
@@ -155,23 +157,23 @@ def main(cfg: DictConfig):
                 anim="targetwave",
             )
             if not Path(fpath).exists() or cfg.overwrite:
-                animate_waveform(snippet, target_start, fpath)
+                animate_waveform(snippet, target_start, "target", fpath)
 
-            start = int(seg["start_time"] * AUDIO_FS)
-            end = int(seg["end_time"] * AUDIO_FS)
-            snippet = target_power[start:end]
-            thing = framewise_rms(snippet)
+            # start = int(seg["start_time"] * AUDIO_FS)
+            # end = int(seg["end_time"] * AUDIO_FS)
+            # snippet = target_power[start:end]
+            # thing = framewise_rms(snippet)
 
-            fpath = animation_ftemplate.format(
-                session=session,
-                device=device,
-                pid=pid,
-                seg=seg["index"],
-                anim="targetpower",
-            )
+            # fpath = animation_ftemplate.format(
+            #     session=session,
+            #     device=device,
+            #     pid=pid,
+            #     seg=seg["index"],
+            #     anim="targetpower",
+            # )
 
-            if not Path(fpath).exists() or cfg.overwrite:
-                animate_waveform(thing, target_start, fpath)
+            # if not Path(fpath).exists() or cfg.overwrite:
+            #     animate_waveform(thing, target_start, "target", fpath)
 
 
 if __name__ == "__main__":

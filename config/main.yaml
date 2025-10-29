@@ -19,6 +19,7 @@ sessions_file: ${paths.sessions_file}
 rainbow_file: ${paths.rainbow_file}
 noisy_session_file: ${paths.noisy_session_file}
 ref_session_file: ${paths.ref_session_file}
+ct_session_file: ${paths.ct_session_file}
 segments_file: ${paths.segments_file}
 
 animations_file: ${paths.animations_file}
@@ -36,7 +37,6 @@ overwrite: False
 animation_types:
   - targetwave
   - sumwave
-  - targetpower
 
 transcript_types:
   - none

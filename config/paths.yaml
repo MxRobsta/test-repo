@@ -7,6 +7,7 @@ sessions_file: ${paths.chime9_dir}/metadata/sessions.{dataset}.csv
 rainbow_file: ${paths.chime9_dir}/participant/{dataset}/{pid}.wav
 noisy_session_file: ${paths.chime9_dir}/{device}/{dataset}/{session}.{device}.wav
 ref_session_file: ${paths.chime9_dir}/ref/{dataset}/{session}.{device}.{pid}.wav
+ct_session_file: ${paths.chime9_dir}/ct/{dataset}/{session}.ct_{pid}.wav
 segments_file: ${paths.chime9_dir}/metadata/ref/{dataset}/{session}.{device}.{pid}.csv
 
 noisy_seg_file: ${paths.scratch_dir}/{device}/{dataset}/{session}.{device}.{pid}.{seg}.{start}_{end}.wav
