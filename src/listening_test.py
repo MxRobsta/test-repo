@@ -38,6 +38,13 @@ def get_current():
 def encode_current(prep=""):
     for k, v in get_current().items():
         prep += str(k) + str(v)
+    print(st.session_state)
+    # base = prep
+    # i = 0
+    # while prep in st.session_state:
+    #     prep = base + str(i)
+    #     i += 1
+
     return prep
 
 
@@ -60,7 +67,8 @@ def append_save(response):
             "key": seg["key"],
             "ground_truth": seg["ground_truth"],
             "response": response[0],
-            "commment": response[1],
+            "perceived_intel": response[1],
+            "commment": response[2],
             "isTrain": current["isTrain"],
         }
     )
@@ -210,7 +218,7 @@ def show_sample(segment_ftemplate, dummy_stage=None):
         cola.write("**Response**")
 
         if dummy_stage is None:
-            key = speaker * 1000 + index
+            key = encode_current("response")
             default = ""
         else:
             key = dummy_stage
@@ -222,6 +230,24 @@ def show_sample(segment_ftemplate, dummy_stage=None):
     else:
         response = ""
 
+    if dummy_stage is None:
+        perceived = st.slider(
+            "Perceived Intelligibility",
+            min_value=0,
+            max_value=100,
+            key=encode_current("perceive"),
+        )
+    elif dummy_stage == "perc_intel":
+        perceived = st.slider(
+            "Perceived Intelligibility",
+            default=50,
+            min_value=0,
+            max_value=100,
+            key=encode_current("perceiveinst"),
+        )
+    else:
+        perceived = 0
+
     st.video(fpath, "video/mp4")
 
     if dummy_stage is None:
@@ -229,7 +255,7 @@ def show_sample(segment_ftemplate, dummy_stage=None):
     else:
         comment = ""
 
-    return response, comment
+    return response, perceived, comment
 
 
 def continue_test(response):
