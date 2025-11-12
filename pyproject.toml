@@ -10,10 +10,16 @@ dependencies = [
     "matplotlib>=3.10.7",
     "numpy<2.0.0",
     "pandas>=2.3.2",
+    "ppgs>=0.0.9",
     "pre-commit>=4.3.0",
+    "pysepm",
+    "pystoi>=0.4.1",
     "soundfile>=0.13.1",
     "soxr>=1.0.0",
     "streamlit>=1.50.0",
     "tqdm>=4.67.1",
 ]
+
+[tool.uv.sources]
+pysepm = { url = "https://github.com/schmiph2/pysepm/archive/master.zip" }
 
