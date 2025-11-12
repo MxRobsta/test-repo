@@ -1,0 +1,9 @@
+defaults:
+  - .@paths: paths
+  - _self_
+
+sessions_file: ${paths.sessions_file}
+dataset: test
+
+raw_file: ${paths.raw_transcript_file}
+tidy_file: ${paths.tidy_transcript_file}
