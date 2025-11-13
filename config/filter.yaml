@@ -2,8 +2,14 @@ defaults:
   - .@paths: paths
   - _self_
 
-noisy_seg_file: ${paths.noisy_seg_file}
-ref_seg_file: ${paths.ref_seg_file}
+dataset: test
 
-filtered_file: ${paths.filtered_file}
-filtered_store: ${paths.filtered_store}
+sessions_file: ${paths.sessions_file}
+
+transcript_file: ${paths.tidy_transcript_file}
+testable_file: ${paths.testable_transcript_file}
+
+min_words: 5
+max_words: 9
+
+prewindow: 5 # time before utterance to check, in seconds

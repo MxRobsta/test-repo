@@ -7,6 +7,8 @@ sessions_file: ${paths.chime9_dir}/metadata/sessions.{dataset}.csv
 
 raw_transcript_file: ${paths.transcript_dir}/raw/{dataset}/{session}.ct_{pos}.json
 tidy_transcript_file: ${paths.transcript_dir}/tidy/{dataset}/{session}.transcript.{pid}.json
+tidy_tsv_file: ${paths.transcript_dir}/tidy_tsv/{dataset}/{session}.transcript.{pid}.tsv
+testable_transcript_file: ${paths.transcript_dir}/testable/{dataset}/{session}.{device}.{pid}.json
 
 rainbow_file: ${paths.chime9_dir}/participant/{dataset}/{pid}.wav
 noisy_session_file: ${paths.chime9_dir}/{device}/{dataset}/{session}.{device}.wav
