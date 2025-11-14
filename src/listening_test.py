@@ -240,11 +240,7 @@ def show_sample(segment_ftemplate, dummy_stage=None):
         perceived = 0
 
     st.video(fpath, "video/mp4")
-
-    if dummy_stage is None:
-        comment = st.text_input("Comments here", key=encode_current("comment"))
-    else:
-        comment = ""
+    comment = ""
 
     return response, perceived, comment
 
@@ -257,7 +253,6 @@ def continue_test(response):
         st.session_state.current["state"] = "rainbow"
         st.session_state.current["speaker"] = 0
         response = unique_name(response)
-        print(response)
         st.session_state.responses = {"name": response, "segments": []}
     elif state == "rainbow":
         st.session_state.current = {

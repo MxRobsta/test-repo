@@ -11,3 +11,7 @@ anything you understand correctly.
 - You **cannot** go back at any point during the test. To avoid accidentally
 clicking through, on each page you must check the "Confirm you want to continue"
 box before you can proceed to the next page.
+- Progress is **not saved**, so please don't refresh or it'll take you back to
+the start. You will be able to download the data at the end of the test.
+- Please only listen to the audio samples **once**, as if it were a real-life
+situation
