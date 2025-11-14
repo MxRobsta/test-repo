@@ -38,12 +38,6 @@ def get_current():
 def encode_current(prep=""):
     for k, v in get_current().items():
         prep += str(k) + str(v)
-    print(st.session_state)
-    # base = prep
-    # i = 0
-    # while prep in st.session_state:
-    #     prep = base + str(i)
-    #     i += 1
 
     return prep
 
@@ -109,6 +103,7 @@ def instructions(rainbow_ftemplate, segment_ftemplate):
         "Volume",
         "Task",
         "Transcript",
+        "Effort",
         "Training",
         "Summary",
         "Important",
@@ -127,27 +122,11 @@ def instructions(rainbow_ftemplate, segment_ftemplate):
             tab.button(
                 "Continue", on_click=continue_test, args=[name], disabled=len(name) == 0
             )
-        elif tmd in ["volume", "task", "transcript", "training"]:
+        elif tmd in ["volume", "task", "transcript", "effort", "training"]:
             with tab:
                 if tmd == "training":
                     show_rainbow(rainbow_ftemplate, True)
                 show_sample(segment_ftemplate, tmd)
-
-
-def pretrain():
-    current = st.session_state.current
-    speaker = current["speaker"]
-    pid = SEGMENTS[speaker]["pid"]
-
-    st.header(f"TRAINING for {pid}")
-
-
-def pretest():
-    current = st.session_state.current
-    speaker = current["speaker"]
-    pid = SEGMENTS[speaker]["pid"]
-
-    st.header(f"TESTING for {pid}")
 
 
 def show_rainbow(rainbow_ftemplate, dummy=False):
@@ -165,6 +144,29 @@ def show_rainbow(rainbow_ftemplate, dummy=False):
 
 
 def show_sample(segment_ftemplate, dummy_stage=None):
+
+    def show_slider(key):
+
+        left, right = st.columns(2)
+        with left:
+            st.write("very hard")
+        with right:
+            st.write(
+                "<p style='text-align:right'>not at all hard</p>",
+                unsafe_allow_html=True,
+            )
+
+        perceived = st.slider(
+            "Listening Effort",
+            value=5,
+            min_value=0,
+            max_value=10,
+            key=key,
+            label_visibility="collapsed",
+        )
+
+        return perceived
+
     if dummy_stage is not None:
         speaker, index = 0, 0
     else:
@@ -198,9 +200,9 @@ def show_sample(segment_ftemplate, dummy_stage=None):
             f"Speaker Sample {current['sample'] + 1 - N_TRAINS}/{len(info['segments']) - N_TRAINS}"
         )
 
-    if dummy_stage in ["task", "transcript", "training", None]:
+    if dummy_stage in ["task", "transcript", "training", "effort", None]:
 
-        if dummy_stage in ["transcript", "training", None]:
+        if dummy_stage in ["transcript", "training", "effort", None]:
             st.subheader("Prior Transcript")
             lines = ["Target: " + segment["target_prior"]]
             lines += segment["other_prior"].split("\n\n")
@@ -231,20 +233,9 @@ def show_sample(segment_ftemplate, dummy_stage=None):
         response = ""
 
     if dummy_stage is None:
-        perceived = st.slider(
-            "Perceived Intelligibility",
-            min_value=0,
-            max_value=100,
-            key=encode_current("perceive"),
-        )
-    elif dummy_stage == "perc_intel":
-        perceived = st.slider(
-            "Perceived Intelligibility",
-            default=50,
-            min_value=0,
-            max_value=100,
-            key=encode_current("perceiveinst"),
-        )
+        perceived = show_slider(encode_current("perceived"))
+    elif dummy_stage == "effort":
+        perceived = show_slider(encode_current("perceiveinst"))
     else:
         perceived = 0
 
