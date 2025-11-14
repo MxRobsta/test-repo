@@ -171,9 +171,9 @@ def show_sample(segment_ftemplate, dummy_stage=None):
 
         perceived = st.slider(
             "Listening Effort",
-            value=5,
+            value=50,
             min_value=0,
-            max_value=10,
+            max_value=100,
             key=key,
             label_visibility="collapsed",
         )

@@ -1,0 +1,13 @@
+{
+    "name": "a",
+    "segments": [
+        {
+            "key": "dev_03.aria.P095.24",
+            "ground_truth": "Nah you don't, you have to hold it ",
+            "response": "",
+            "perceived_intel": 37,
+            "commment": "",
+            "isTrain": true
+        }
+    ]
+}
