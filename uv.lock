@@ -1868,7 +1868,7 @@ source = { url = "https://github.com/ludlows/python-pesq/archive/master.zip" }
 dependencies = [
     { name = "numpy" },
 ]
-sdist = { hash = "sha256:6eb0ae4264614bc5fb812a4c55291bfbd1f1032de16ed9982638266fe8265ec2" }
+sdist = { url = "", hash = "sha256:6eb0ae4264614bc5fb812a4c55291bfbd1f1032de16ed9982638266fe8265ec2" }
 
 [package.metadata]
 requires-dist = [{ name = "numpy", specifier = "<2.0" }]
@@ -2177,7 +2177,7 @@ dependencies = [
     { name = "scipy" },
     { name = "srmrpy" },
 ]
-sdist = { hash = "sha256:ede594946672fdc49b9a2434c4f7be3de7cf880d3739c437317552275a347832" }
+sdist = { url = "", hash = "sha256:ede594946672fdc49b9a2434c4f7be3de7cf880d3739c437317552275a347832" }
 
 [package.metadata]
 requires-dist = [
@@ -2903,7 +2903,7 @@ dependencies = [
     { name = "numpy" },
     { name = "scipy" },
 ]
-sdist = { hash = "sha256:283b023e264f41066fa9aea5d66f3bb7bf97c14074b8b86f0de713306bed2e9d" }
+sdist = { url = "", hash = "sha256:283b023e264f41066fa9aea5d66f3bb7bf97c14074b8b86f0de713306bed2e9d" }
 
 [package.metadata]
 requires-dist = [
