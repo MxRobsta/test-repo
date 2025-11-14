@@ -1,7 +1,8 @@
 # Custom
 data/*
 !data/.gitkeep
-!data/minitests/mini_test_v2
+!data/minitests
+data/minitests/mini_test_v1
 outputs
 scratch
 
