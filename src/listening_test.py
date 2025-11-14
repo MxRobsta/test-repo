@@ -180,14 +180,14 @@ def show_sample(segment_ftemplate, dummy_stage=None):
 
         return perceived
 
-    if dummy_stage is not None:
+    if dummy_stage not in ["trainsamp", "realsamp"]:
         speaker, index = 0, 0
     else:
         current = get_current()
         speaker = current["speaker"]
         index = current["sample"]
 
-    if dummy_stage in [None, "trainsample"]:
+    if dummy_stage in ["realsamp", "trainsamp"]:
         progress(speaker, index)
 
     info = SEGMENTS[speaker]
@@ -209,16 +209,23 @@ def show_sample(segment_ftemplate, dummy_stage=None):
     )
 
     current = get_current()
-    if dummy_stage is None and current["isTrain"]:
+    if dummy_stage == "trainsamp":
         st.header(f"Training Sample {current['sample'] + 1}/{N_TRAINS}")
-    elif dummy_stage is None:
+    elif dummy_stage == "realsamp":
         st.header(
             f"Speaker Sample {current['sample'] + 1 - N_TRAINS}/{len(info['segments']) - N_TRAINS}"
         )
 
-    if dummy_stage in ["task", "transcript", "training", "effort", None]:
+    if dummy_stage in [
+        "task",
+        "transcript",
+        "training",
+        "effort",
+        "trainsamp",
+        "realsamp",
+    ]:
 
-        if dummy_stage in ["transcript", "training", "effort", None]:
+        if dummy_stage in ["transcript", "training", "effort", "trainsamp", "realsamp"]:
             st.subheader("Prior Transcript")
             lines = ["Target: " + segment["target_prior"]]
             lines += segment["other_prior"].split("\n\n")
@@ -235,7 +242,7 @@ def show_sample(segment_ftemplate, dummy_stage=None):
 
         cola.write("**Response**")
 
-        if dummy_stage is None:
+        if dummy_stage == "realsamp":
             key = encode_current("response")
             default = ""
         else:
@@ -248,7 +255,7 @@ def show_sample(segment_ftemplate, dummy_stage=None):
     else:
         response = ""
 
-    if dummy_stage is None:
+    if dummy_stage in ["trainsamp", "realsamp"]:
         perceived = show_slider(encode_current("perceived"))
     elif dummy_stage == "effort":
         perceived = show_slider(encode_current("perceiveinst"))
@@ -338,9 +345,9 @@ def main():
     elif state == "rainbow":
         response = show_rainbow(cfg.test_rainbow_file)
     elif state == "training":
-        response = show_sample(cfg.exp_segment_video, "effort")
+        response = show_sample(cfg.exp_segment_video, "trainsamp")
     elif state == "testing":
-        response = show_sample(cfg.exp_segment_video)
+        response = show_sample(cfg.exp_segment_video, "realsamp")
     elif state == "end":
         response = end_window(cfg)
     else:
