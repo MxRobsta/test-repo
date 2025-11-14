@@ -129,11 +129,24 @@ def instructions(rainbow_ftemplate, segment_ftemplate):
                 show_sample(segment_ftemplate, tmd)
 
 
+def progress(speaker, index):
+    total = sum(len(x["segments"]) for x in SEGMENTS)
+    count = 0
+    for i in range(speaker):
+        count += len(SEGMENTS[i]["segments"])
+    count += index
+
+    st.progress(count / total, "Progress")
+
+
 def show_rainbow(rainbow_ftemplate, dummy=False):
     if dummy:
         speaker = 0
     else:
         speaker = get_current()["speaker"]
+
+    if not dummy:
+        progress(speaker, 0)
 
     pid = SEGMENTS[speaker]["pid"]
     st.header("Clean speech sample for the target")
@@ -173,6 +186,9 @@ def show_sample(segment_ftemplate, dummy_stage=None):
         current = get_current()
         speaker = current["speaker"]
         index = current["sample"]
+
+    if dummy_stage in [None, "trainsample"]:
+        progress(speaker, index)
 
     info = SEGMENTS[speaker]
     segment = info["segments"][index]

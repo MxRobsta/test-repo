@@ -8,3 +8,5 @@ tests.
 During this introduction phase, you can go back on forth between the tabs as
 much as you like. Please read each tab carefully so you fully understand the
 task.
+
+The test will take ~20 minutes. Please find a quiet place and use headphones.
