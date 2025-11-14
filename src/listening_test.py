@@ -337,7 +337,9 @@ def main():
         response = instructions(cfg.test_rainbow_file, cfg.exp_segment_video)
     elif state == "rainbow":
         response = show_rainbow(cfg.test_rainbow_file)
-    elif state == "training" or state == "testing":
+    elif state == "training":
+        response = show_sample(cfg.exp_segment_video, "effort")
+    elif state == "testing":
         response = show_sample(cfg.exp_segment_video)
     elif state == "end":
         response = end_window(cfg)

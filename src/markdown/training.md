@@ -12,5 +12,5 @@ Before you evaluate any of these 9 samples, you will be given:
 The training samples will be exactly the same as the real samples, but you will
 be given the correct transcript.
 
-Below you'll find the rainbow sample for the target speaker, and the same
+Below you'll find the clean speech sample for the target speaker, and the same
 example that has been seen before.
