@@ -1,14 +1,54 @@
-import csv
 import hydra
 import json
+import numpy as np
 from omegaconf import DictConfig
 from pathlib import Path
 
+from utils import load_csv, load_json, get_wearer_targets
 
-def read_ts(fpath):
-    with open(fpath, "r") as file:
-        data = json.load(file)
-    return data
+GRANULARITY = 10
+
+
+def get_vad_array(transcripts):
+    max_len = max(max(x["end_time"] for x in y) for y in transcripts.values())
+    max_sample = int(GRANULARITY * max_len)
+
+    vad = {}
+    for pid, transcript in transcripts.items():
+        vad[pid] = np.zeros(max_sample) - 1
+
+        for i, seg in enumerate(transcript):
+            start = int(seg["start_time"] * GRANULARITY)
+            end = int(seg["end_time"] * GRANULARITY)
+            vad[pid][start:end] = i
+    return vad
+
+
+def extract_hits(transcripts, hits, target):
+
+    testable = []
+    for i, h in enumerate(hits):
+        target_index = h["target"]
+        priors = h["priors"]
+
+        item = {
+            "target_pid": target,
+        }
+
+        target_segment = transcripts[target][target_index]
+        target_segment["pid"] = target
+        item["target_segment"] = target_segment
+
+        item["prior_segments"] = []
+        for pid, ids in priors.items():
+            for i in ids:
+                seg = transcripts[pid][i]
+                seg["pid"] = pid
+                item["prior_segments"].append(seg)
+
+        testable.append(item)
+
+    return testable
 
 
 def count_words(text: str):
@@ -41,29 +81,38 @@ def filter_n_words(transcript, min_words, max_words):
     return suitable
 
 
-def filter_prewindow(targ_ts, transcripts, wearers, prewindow):
+def filter_prewindow(targ_ts, target, vad, partner, wearers, prewindow):
 
-    bad_segments = []
-    for w in wearers:
-        bad_segments += transcripts[w]
-    rem = []
+    if isinstance(wearers, str):
+        wearers = [wearers]
+
+    wearer_vad = np.concatenate([vad[w] for w in wearers])
+
+    hits = []
 
     for seg in targ_ts:
-        start = seg["start_time"] - prewindow
-        end = seg["end_time"]
-        bad = False
-        for bs in bad_segments:
-            if bs["end_time"] > start and bs["start_time"] < start:
-                bad = True
-                break
-            elif bs["start_time"] < end and bs["end_time"] > end:
-                bad = True
-                break
+        index = seg["index"]
+        targ_start = int(seg["start_time"] * GRANULARITY)
+        pre_start = int(targ_start - prewindow * GRANULARITY)
+        end = int(seg["end_time"] * GRANULARITY)
 
-        if not bad:
-            rem.append(seg)
+        if any(wearer_vad[pre_start:end] >= 0):
+            # Ignore if device wearer is talking
+            continue
 
-    return rem
+        priors = {}
+        for pid in [target, partner]:
+            segments = list(set(vad[pid][pre_start:targ_start]))
+            segments = [int(s) for s in segments if s >= 0]
+            if len(segments) > 0:
+                priors[pid] = segments
+
+        if len(priors) == 0:
+            continue
+
+        hits.append({"target": index, "priors": priors})
+
+    return hits
 
 
 @hydra.main(version_base=None, config_path="../config", config_name="filter")
@@ -73,8 +122,7 @@ def main(cfg: DictConfig):
 
     # load sessions file
     session_fpath = cfg.sessions_file.format(dataset=cfg.dataset)
-    with open(session_fpath, "r") as file:
-        session_info = list(csv.DictReader(file))
+    session_info = load_csv(session_fpath)
 
     min_words = cfg.min_words
     max_words = cfg.max_words
@@ -90,18 +138,22 @@ def main(cfg: DictConfig):
             fpath = cfg.transcript_file.format(
                 dataset=cfg.dataset, session=sinfo["session"], pid=f"pos{i}"
             )
-            transcripts[pid] = read_ts(fpath)
+            transcripts[pid] = load_json(fpath)
 
-        wearers = {d: sinfo[f"pos{sinfo[f'{d}_pos']}"] for d in devices}
-        targets = [p for p in pids if p not in wearers.values()]
+        wearers, targets = get_wearer_targets(sinfo)
 
-        for device in ["aria", "ha"]:
+        vad = get_vad_array(transcripts)
+
+        for device in devices:
             for targ in targets:
+                partner = targets[int(targ == targets[0])]
                 dev_ts = transcripts[targ]
                 dev_ts = filter_n_words(dev_ts, min_words, max_words)
-                dev_ts = filter_prewindow(
-                    dev_ts, transcripts, [wearers[device]], prewindow
+                hits = filter_prewindow(
+                    dev_ts, targ, vad, partner, list(wearers.values()), prewindow
                 )
+
+                segments = extract_hits(transcripts, hits, targ)
 
                 out_fpath = Path(
                     cfg.testable_file.format(
@@ -114,11 +166,11 @@ def main(cfg: DictConfig):
                 out_fpath.parent.mkdir(parents=True, exist_ok=True)
 
                 with open(out_fpath, "w") as file:
-                    json.dump(dev_ts, file, indent=4)
+                    json.dump(segments, file, indent=4)
 
                 print(
                     f"{sinfo['session']}.{device}.{targ}",
-                    len(dev_ts),
+                    len(segments),
                     len(transcripts[targ]),
                 )
 

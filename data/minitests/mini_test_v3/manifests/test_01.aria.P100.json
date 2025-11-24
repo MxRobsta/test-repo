@@ -1,0 +1,33 @@
+[
+    {
+        "id": "001",
+        "target_pid": "P100",
+        "target_segment": {
+            "pid": "P100",
+            "start_time": 2049.47,
+            "end_time": 2052.17,
+            "start_sample": 32791519,
+            "end_sample": 32834720,
+            "text": "I think we've, yeah, combined.",
+            "clean": "i think we've yeah combined"
+        },
+        "prior_segments": [
+            {
+                "pid": "P099",
+                "start_time": 2046.45,
+                "end_time": 2048.45,
+                "start_sample": 32743200,
+                "end_sample": 32775199,
+                "text": "I think we could do what you said."
+            },
+            {
+                "pid": "P099",
+                "start_time": 2050.72,
+                "end_time": 2051.52,
+                "start_sample": 32811519,
+                "end_sample": 32824320,
+                "text": "Yeah."
+            }
+        ]
+    }
+]

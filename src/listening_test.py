@@ -318,7 +318,7 @@ def continue_test(response):
 
 def end_window(cfg):
     cfg.listener = st.session_state.responses["name"]
-    fig = plot_wer(cfg, True)
+    fig = plot_wer(cfg)
     st.pyplot(fig)
     st.write(
         "Please download your data using the button below and send it to rwhsutherland1@sheffield.ac.uk"

@@ -1,4 +1,7 @@
+import csv
+import json
 import numpy as np
+from pathlib import Path
 import soundfile as sf
 import soxr
 from typing import Tuple
@@ -46,3 +49,32 @@ def rms_norm(audio, target_rms):
     audio *= target_rms / audio_rms
 
     return audio
+
+
+def load_csv(fpath: str | Path):
+    with open(fpath) as file:
+        data = list(csv.DictReader(file))
+    return data
+
+
+def load_json(fpath: str | Path):
+    with open(fpath) as file:
+        data = json.load(file)
+    return data
+
+
+def save_json(fpath: str | Path, data):
+    parent = Path(fpath).parent
+    parent.mkdir(exist_ok=True, parents=True)
+    with open(fpath, "w") as file:
+        json.dump(data, file, indent=4)
+
+
+def get_wearer_targets(session_info):
+    devices = ["aria", "ha"]
+    pids = [session_info[f"pos{i}"] for i in range(1, 5)]
+
+    wearers = {d: session_info[f"pos{session_info[f'{d}_pos']}"] for d in devices}
+    targets = [p for p in pids if p not in wearers.values()]
+
+    return wearers, targets

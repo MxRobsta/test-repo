@@ -49,9 +49,11 @@ def main(cfg: DictConfig):
             with open(raw_fpath, "r") as file:
                 raw_ts = json.load(file)
 
+            pid = sinfo[f"pos{i}"]
+
             tidy_ts = []
 
-            for seg in raw_ts:
+            for index, seg in enumerate(raw_ts):
                 start_str = seg["start_time"]["original"]
                 end_str = seg["end_time"]["original"]
 
@@ -60,6 +62,8 @@ def main(cfg: DictConfig):
 
                 tidy_ts.append(
                     {
+                        "index": index,
+                        "pid": pid,
                         "start_time": start_time,
                         "end_time": end_time,
                         "start_sample": int(SAMPLE_RATE * start_time),
@@ -77,7 +81,6 @@ def main(cfg: DictConfig):
                 tidy_fpath.parent.mkdir(parents=True)
             with open(tidy_fpath, "w") as file:
                 json.dump(tidy_ts, file, indent=4)
-            pid = sinfo[f"pos{i}"]
             tidy_fpath_pid = Path(
                 cfg.tidy_file.format(dataset=cfg.dataset, session=session, pid=pid)
             )

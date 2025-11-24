@@ -1,0 +1,29 @@
+{
+    "name": "ssg",
+    "segments": [
+        {
+            "key": "dev_03.aria.P095.24",
+            "ground_truth": "Nah you don't, you have to hold it ",
+            "response": "",
+            "perceived_intel": 50,
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_03.aria.P095.40",
+            "ground_truth": "That goes down very quickly though",
+            "response": "",
+            "perceived_intel": 50,
+            "commment": "",
+            "isTrain": true
+        },
+        {
+            "key": "dev_03.aria.P095.41",
+            "ground_truth": "I used to take cold showers every morning",
+            "response": "",
+            "perceived_intel": 50,
+            "commment": "",
+            "isTrain": true
+        }
+    ]
+}

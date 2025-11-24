@@ -1,6 +1,6 @@
 chime9_dir: data/chime9_echi
 scratch_dir: data/scratch
-minitest_dir: data/minitests/mini_test_v2
+minitest_dir: data/minitests/mini_test_v3
 transcript_dir: data/perfect_transcripts
 
 sessions_file: ${paths.chime9_dir}/metadata/sessions.{dataset}.csv
